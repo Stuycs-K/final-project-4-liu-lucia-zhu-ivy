@@ -4,7 +4,7 @@
 
 ### date 5/22/24
 
-Created the Tetris, Blocks, and Grid classes; pushed it to Git. Figuring out merging and branch mechanics. 
+Created the Tetris, Blocks, and Grid classes; pushed it to Git. Figuring out merging and branch mechanics. Created two new branches, one for each person.
 
 ### date y
 
