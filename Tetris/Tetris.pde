@@ -15,7 +15,11 @@ void setup() {
   }
   // The code above created the grid drawing (+ border, vert & horiz lines)
   
-  rectBorder(400, 100, 1000, 20);
+  rectBorder(400, 150, 1000, 20); // top score sign
+  rectBorder(400, 150, 1000, 190); // current score sign
+  rectBorder(400, 150, 1000, 360); // time sign
+  rectBorder(400, 150, 1000, 530); // lines cleared sign
+  rectBorder(400, 150, 1000, 700); // current block speed sign
   
 }
 
