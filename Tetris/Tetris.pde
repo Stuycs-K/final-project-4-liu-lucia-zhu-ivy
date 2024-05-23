@@ -16,4 +16,6 @@ void setup() {
       rect(i, j, 43, 43);
     }
   }
+  // The code above created the grid drawing (+ border, vert & horiz lines)
+  
 }
