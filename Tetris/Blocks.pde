@@ -2,15 +2,39 @@
 abstract class Blocks{
   private String type;
   private double speed;
-  private int x;
+  public int x,y;
+  private color c;
+  public int[][] block;
+  public final int pixSize = 43;
   
-  public Blocks(String name, double s){
+  public Blocks(String name, int r, int c){
     type = name;
-    speed = s;
+    speed = 1;
     x = width /2;
+    y = 0;
+    c = color(random(255), random(255), random(255));
+    block = new int[r][c];
   }
   
-  public void keyPressed(){}
+  public void keyPressed(){
+    if(key == CODED){
+      if(keyCode == UP){
+        up();
+      }
+      if(keyCode == DOWN){
+        down();
+      }
+      if(keyCode == LEFT){
+        left();
+      }
+      if(keyCode == RIGHT){
+        right();
+      }
+      if(keyCode == 32){
+        space();
+      }
+    }
+  }
   
   public void up(){
     // rotates block
