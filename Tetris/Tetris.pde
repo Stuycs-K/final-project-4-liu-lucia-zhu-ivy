@@ -21,6 +21,8 @@ void setup() {
   rectBorder(400, 150, 1000, 530); // lines cleared sign
   rectBorder(400, 150, 1000, 700); // current block speed sign
   
+  rectBorder(400, 400, 30, 20); // up-next displayer
+  
 }
 
 // draws a white-bordered black rectangle (border width: 10 px)
