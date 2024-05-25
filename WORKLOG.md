@@ -6,9 +6,14 @@
 
 Created the Tetris, Blocks, and Grid classes; pushed it to Git. Figuring out merging and branch mechanics. Created two new branches, one for each person.
 
-### date y
+### date 5/23/24
 
-info
+Created Tetris playing grid (20 x 10 blocks), where is where blocks will appear and drop. 
+
+### date 5/24/24
+
+Created 6 signs, which will be used to indicate score, top score, time, next block that will drop, number of lines cleared,
+and the current falling speed of the blocks. 
 
 
 ## GROUP MEMBER 2 (IVY ZHU)
