@@ -3,7 +3,7 @@ abstract class Blocks{
   private String type;
   private double speed;
   public int x,y;
-  private color c;
+  public color c;
   public int[][] block;
   public final int pixSize = 43;
   

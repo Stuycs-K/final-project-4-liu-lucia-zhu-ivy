@@ -23,6 +23,10 @@ void setup() {
   
   rectBorder(400, 400, 30, 20); // up-next displayer
   
+  // Testing my shapes - ivy
+  
+  //makeJ(); negative array size error
+  
 }
 
 // draws a white-bordered black rectangle (border width: 10 px)
@@ -32,4 +36,16 @@ void rectBorder(int w, int h, int x, int y) {
   rect(x, y, w, h);
   fill(0);
   rect(x + 10, y + 10, w - 20, h - 20);
+}
+
+void makeJ(){
+  J tetra = new J();
+  for (int i = 500; i <= 887; i = i + 43) {
+    for (int j = 20; j <= 860; j = j + 43) {
+      if (tetra.block[i/43][j/43] == 1){
+        fill(tetra.c);
+        square(i, j, 43);
+      }
+    }
+  }
 }
