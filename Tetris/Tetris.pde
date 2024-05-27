@@ -6,9 +6,9 @@ int linesCleared;
   
 void setup() {
   size(1500, 900);
-  rectBorder(450, 880, 490, 10);
+  rectBorder(450, 880, 520, 10);
   stroke(255);
-  for (int i = 500; i <= 887; i = i + 43) {
+  for (int i = 530; i <= 917; i = i + 43) {
     for (int j = 20; j <= 860; j = j + 43) {
       rect(i, j, 43, 43);
     }
@@ -20,8 +20,14 @@ void setup() {
   rectBorder(400, 150, 1000, 360); // time sign
   rectBorder(400, 150, 1000, 530); // lines cleared sign
   rectBorder(400, 150, 1000, 700); // current block speed sign
+  // maybe I can fit another sign on the right 
+  // by making all the other signs a little smaller.
+  // this sign could display the title name "Tetrisand" 
+  // and could also include instructions on how to play. 
   
-  rectBorder(400, 400, 30, 20); // up-next displayer
+  rectBorder(300, 300, 30, 20); // up-next block displayer
+  rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
+  rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
   
   // Testing my shapes - ivy
   
