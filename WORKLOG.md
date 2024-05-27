@@ -15,6 +15,10 @@ Created Tetris playing grid (20 x 10 blocks), where is where blocks will appear 
 Created 6 signs, which will be used to indicate score, top score, time, next block that will drop, number of lines cleared,
 and the current falling speed of the blocks. 
 
+### date 5/25/24
+
+Added 2 more signs (one showing block statistics and the other displaying the current mode: sand or normal)
+
 
 ## GROUP MEMBER 2 (IVY ZHU)
 
