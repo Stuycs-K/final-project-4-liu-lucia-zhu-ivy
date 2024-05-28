@@ -22,7 +22,7 @@ public class Grid {
     if (toSpawn.size() == 0) {
       fill();
     }
-   
+   String type = toSpawn.get((int)(Math.random() * toSpawn.size()));
   }
   
   void drawGrid() {
