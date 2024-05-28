@@ -1,6 +1,6 @@
 /// Grid Class
 
-//public class Grid {
+public class Grid {
 //  int width;
 //  int height;
   
@@ -14,4 +14,24 @@
 //    height = h;
 //}  
 
-//}
+int[][] grid;
+ArrayList<Blocks> toSpawn;
+
+public void run(){
+  Blocks curr = toSpawn.remove(0);
+  int[][] blocks = curr.block;
+  for (int i = 0; i < blocks.length; i++){
+    for (int j = 0; j < blocks[0].length; j++){
+      if(blocks[i][j] == 1){
+        grid[curr.x+i][curr.y+j] = 1;
+        
+      }
+    }
+  }
+}
+
+public void display(int x, int y){
+  square(x*43 + 530, y*43 + 20, 43);
+}
+
+}
