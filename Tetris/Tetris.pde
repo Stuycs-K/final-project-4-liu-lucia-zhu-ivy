@@ -44,14 +44,7 @@ void rectBorder(int w, int h, int x, int y) {
   rect(x + 10, y + 10, w - 20, h - 20);
 }
 
-void makeJ(){
-  J tetra = new J();
-  for (int i = 500; i <= 887; i = i + 43) {
-    for (int j = 20; j <= 860; j = j + 43) {
-      if (tetra.block[i/43][j/43] == 1){
-        fill(tetra.c);
-        square(i, j, 43);
-      }
-    }
-  }
+void draw() {
+  Grid grid = new Grid();
+  grid.drawGrid();
 }
