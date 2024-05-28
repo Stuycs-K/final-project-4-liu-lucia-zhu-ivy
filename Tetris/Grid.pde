@@ -23,8 +23,10 @@ public void run(){
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){
       if(blocks[i][j] == 1){
-        grid[curr.x+i][curr.y+j] = 1;
-        
+        int x = curr.x+i;
+        int y = curr.y+j;
+        grid[x][y] = 1;
+        display(x,y);
       }
     }
   }
