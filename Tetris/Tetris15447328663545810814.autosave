@@ -29,8 +29,9 @@ void setup() {
   rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
   rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
   
-  Grid g = new Grid();
-  g.run();
+  // Testing my shapes - ivy
+  
+  //makeJ(); negative array size error
   
 }
 
@@ -41,4 +42,7 @@ void rectBorder(int w, int h, int x, int y) {
   rect(x, y, w, h);
   fill(0);
   rect(x + 10, y + 10, w - 20, h - 20);
+}
+
+void draw() {
 }
