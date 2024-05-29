@@ -1,11 +1,18 @@
 public class Grid {
-  int[][] arr;
+  int[][] grid;
   ArrayList<String> toSpawn;
   Blocks tetri;
 
-  // creates an array representing the playable grid
+  // creates an griday representing the playable grid
   public Grid() { 
-    arr = new int[22][12];
+    grid = new int[22][12];
+    for (int i = 0; i < grid.length; i++){
+      grid[i][0] = 2;
+      grid[i][11] = 2;
+    }
+    for (int i = 0; i < grid[0].length; i++){
+      grid[21][i] = 2;
+    }
     toSpawn = new ArrayList<String>();
     fill();
   }
@@ -38,14 +45,9 @@ public class Grid {
   void drawGrid() {
     
   }
-  
-
-
-int[][] grid;
-ArrayList<Blocks> toSpawn;
 
 public void run(){
-  Blocks curr = toSpawn.remove(0);
+  Blocks curr = tetri;
   int[][] blocks = curr.block;
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){
