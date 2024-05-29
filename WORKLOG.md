@@ -22,10 +22,18 @@ Added 2 more signs (one showing block statistics and the other displaying the cu
 
 ## GROUP MEMBER 2 (IVY ZHU)
 
-### date x
+### date 5/22/24
 
-info
+Wrote abstract class Blocks, figured out merge and branch
 
-### date y
+### date 5/23/24
 
-info
+Created all 7 tetrominoes and constructors
+
+### date 5/24/24
+
+Tried writing up and down for I, J, L
+
+### date 5/25/23
+
+Tried working on displaying tetromino, need to figure out

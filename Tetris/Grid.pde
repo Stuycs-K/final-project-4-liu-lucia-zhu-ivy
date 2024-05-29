@@ -2,7 +2,7 @@ public class Grid {
   int[][] arr;
   ArrayList<String> toSpawn;
   Blocks tetri;
-  
+
   // creates an array representing the playable grid
   public Grid() { 
     arr = new int[22][12];
@@ -39,4 +39,28 @@ public class Grid {
     
   }
   
+
+
+int[][] grid;
+ArrayList<Blocks> toSpawn;
+
+public void run(){
+  Blocks curr = toSpawn.remove(0);
+  int[][] blocks = curr.block;
+  for (int i = 0; i < blocks.length; i++){
+    for (int j = 0; j < blocks[0].length; j++){
+      if(blocks[i][j] == 1){
+        int x = curr.x+i;
+        int y = curr.y+j;
+        grid[x][y] = 1;
+        display(x,y);
+      }
+    }
+  }
+}
+
+public void display(int x, int y){
+  square(x*43 + 530, y*43 + 20, 43);
+}
+
 }

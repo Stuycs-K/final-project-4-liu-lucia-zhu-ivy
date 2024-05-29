@@ -10,7 +10,7 @@ abstract class Blocks{
   public Blocks(String name, int r, int c){
     type = name;
     speed = 1;
-    x = width /2;
+    x = 6;
     y = 0;
     c = color(random(255), random(255), random(255));
     block = new int[r][c];
@@ -42,6 +42,7 @@ abstract class Blocks{
   
   public void down(){
     // moves block down one unit
+    y++;
   }
   
   public void left(){
