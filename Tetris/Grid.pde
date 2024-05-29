@@ -38,14 +38,10 @@ public class Grid {
   void drawGrid() {
     
   }
-  
-
-
-int[][] grid;
-ArrayList<Blocks> toSpawn;
+ 
 
 public void run(){
-  Blocks curr = toSpawn.remove(0);
+  Blocks curr = tetri;
   int[][] blocks = curr.block;
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){
