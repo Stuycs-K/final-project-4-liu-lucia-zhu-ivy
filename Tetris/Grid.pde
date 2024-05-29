@@ -14,11 +14,11 @@ public class Grid {
       grid[21][i] = 2;
     }
     toSpawn = new ArrayList<String>();
-    fill();
+    refill();
   }
   
   // refills the bag (toSpawn) of possible "next" blocks
-  void fill() {
+  void refill() {
     String[] types = new String[] {"I", "J", "L", "O", "S", "T", "Z"};
     for (int i = 0; i < 7; i++) { 
       for (int j = 0; j < 4; j++) {
@@ -30,7 +30,7 @@ public class Grid {
   // randomly chooses and spawns a block from toSpawn
   void spawnBlocks() {
     if (toSpawn.size() == 0) {
-      fill();
+      refill();
     }
    String type = toSpawn.get((int)(Math.random() * toSpawn.size()));
    if (type.equals("I")) { tetri = new I(); }
@@ -47,7 +47,7 @@ public class Grid {
   }
 
 public void run(){
-  Blocks curr = tetri;
+  Blocks curr = new J();
   int[][] blocks = curr.block;
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){
@@ -55,6 +55,7 @@ public void run(){
         int x = curr.x+i;
         int y = curr.y+j;
         grid[x][y] = 1;
+        fill(curr.c);
         display(x,y);
       }
     }

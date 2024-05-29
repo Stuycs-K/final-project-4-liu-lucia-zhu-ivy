@@ -1,5 +1,5 @@
 /// Blocks Class
-abstract class Blocks{
+class Blocks{
   private String type;
   private double speed;
   public int x,y;
@@ -7,13 +7,13 @@ abstract class Blocks{
   public int[][] block;
   public final int pixSize = 43;
   
-  public Blocks(String name, int r, int c){
+  public Blocks(String name, int row, int col){
     type = name;
     speed = 1;
     x = 6;
     y = 0;
     c = color(random(255), random(255), random(255));
-    block = new int[r][c];
+    block = new int[row][col];
   }
   
   public void keyPressed(){
