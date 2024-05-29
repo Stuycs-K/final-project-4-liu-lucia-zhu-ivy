@@ -42,3 +42,11 @@ Tried writing up and down for I, J, L
 ### date 5/25/23
 
 Tried working on displaying tetromino, need to figure out
+
+### date 5/28/23
+
+Decided on how to display the grid, finished writing rotations for tetrominoes
+
+### date 5/29/23
+
+Worked on displaying blocks, got a display working!

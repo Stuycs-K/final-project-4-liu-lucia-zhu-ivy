@@ -10,7 +10,7 @@ class Blocks{
   public Blocks(String name, int row, int col){
     type = name;
     speed = 1;
-    x = 6;
+    x = 5;
     y = 0;
     c = color(random(255), random(255), random(255));
     block = new int[row][col];
