@@ -29,10 +29,6 @@ void setup() {
   rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
   rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
   
-  // Testing my shapes - ivy
-  
-  //makeJ(); negative array size error
-  
 }
 
 // draws a white-bordered black rectangle (border width: 10 px)
