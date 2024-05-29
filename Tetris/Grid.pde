@@ -47,7 +47,7 @@ public class Grid {
   }
 
 public void run(){
-  Blocks curr = new J();
+  Blocks curr = new I();
   int[][] blocks = curr.block;
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){

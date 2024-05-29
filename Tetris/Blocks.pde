@@ -16,7 +16,7 @@ class Blocks{
     block = new int[row][col];
   }
   
-  public void keyPressed(){
+    public void keyPressed(){
     if(key == CODED){
       if(keyCode == UP){
         up();
