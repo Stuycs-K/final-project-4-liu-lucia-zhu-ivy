@@ -1,7 +1,11 @@
 public class Grid {
   int[][] grid;
   ArrayList<String> toSpawn;
+<<<<<<< HEAD
   Blocks curr;
+=======
+  public Blocks tetri;
+>>>>>>> f6548547ac630e4e1accd9b11c1381663996a64d
 
   // creates an griday representing the playable grid
   public Grid() { 
@@ -15,6 +19,7 @@ public class Grid {
     }
     toSpawn = new ArrayList<String>();
     refill();
+    spawnBlocks();
   }
   
   // refills the bag (toSpawn) of possible "next" blocks
@@ -45,6 +50,7 @@ public class Grid {
  
 
 public void run(){
+<<<<<<< HEAD
   curr.fall();
 }
 
@@ -63,4 +69,32 @@ public void display(){
   }
 }
 
+=======
+  drawBlock(tetri, tetri.c, 0);
+  delay(1000);
+  drawBlock(tetri, 0, 255);
+  tetri.down();
+  drawBlock(tetri, tetri.c, 0);
+}
+
+public void display(int x, int y){
+  square(x*43 + 530, y*43 + 20, 43);
+}
+
+public void drawBlock(Blocks curr, color c, color s){
+  int[][] blocks = curr.block;
+  for (int i = 0; i < blocks.length; i++){
+    for (int j = 0; j < blocks[0].length; j++){
+      if(blocks[i][j] == 1){
+        int x = curr.x+j - blocks[0].length/2;
+        int y = curr.y+i;
+        stroke(s);
+        fill(c);
+        display(x,y);
+      }
+    }
+  }
+}
+
+>>>>>>> f6548547ac630e4e1accd9b11c1381663996a64d
 }
