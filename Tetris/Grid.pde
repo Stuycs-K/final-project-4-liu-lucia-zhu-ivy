@@ -1,7 +1,7 @@
 public class Grid {
   int[][] grid;
   ArrayList<String> toSpawn;
-  Blocks tetri;
+  public Blocks tetri;
 
   // creates an griday representing the playable grid
   public Grid() { 
@@ -15,6 +15,7 @@ public class Grid {
     }
     toSpawn = new ArrayList<String>();
     refill();
+    spawnBlocks();
   }
   
   // refills the bag (toSpawn) of possible "next" blocks
@@ -45,7 +46,7 @@ public class Grid {
  
 
 public void run(){
-  Blocks curr = new S();
+  Blocks curr = tetri;
   int[][] blocks = curr.block;
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){

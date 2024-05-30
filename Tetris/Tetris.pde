@@ -3,6 +3,7 @@
 int points;
 int time;
 int linesCleared;
+Grid g;
   
 void setup() {
   size(1500, 900);
@@ -29,9 +30,7 @@ void setup() {
   rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
   rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
   
-  Grid g = new Grid();
-  g.run();
-  
+  g = new Grid();
 }
 
 // draws a white-bordered black rectangle (border width: 10 px)
@@ -41,4 +40,10 @@ void rectBorder(int w, int h, int x, int y) {
   rect(x, y, w, h);
   fill(0);
   rect(x + 10, y + 10, w - 20, h - 20);
+}
+
+void draw(){
+  g.run();
+  delay(1000);
+  g.tetri.down();
 }
