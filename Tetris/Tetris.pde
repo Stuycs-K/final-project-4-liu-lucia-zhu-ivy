@@ -44,6 +44,4 @@ void rectBorder(int w, int h, int x, int y) {
 
 void draw(){
   g.run();
-  delay(1000);
-  g.tetri.down();
 }

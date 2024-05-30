@@ -46,22 +46,30 @@ public class Grid {
  
 
 public void run(){
-  Blocks curr = tetri;
+  drawBlock(tetri, tetri.c, 0);
+  delay(1000);
+  drawBlock(tetri, 0, 255);
+  tetri.down();
+  drawBlock(tetri, tetri.c, 0);
+}
+
+public void display(int x, int y){
+  square(x*43 + 530, y*43 + 20, 43);
+}
+
+public void drawBlock(Blocks curr, color c, color s){
   int[][] blocks = curr.block;
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){
       if(blocks[i][j] == 1){
         int x = curr.x+j - blocks[0].length/2;
         int y = curr.y+i;
-        fill(curr.c);
+        stroke(s);
+        fill(c);
         display(x,y);
       }
     }
   }
-}
-
-public void display(int x, int y){
-  square(x*43 + 530, y*43 + 20, 43);
 }
 
 }
