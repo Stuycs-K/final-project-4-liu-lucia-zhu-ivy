@@ -19,6 +19,11 @@ and the current falling speed of the blocks.
 
 Added 2 more signs (one showing block statistics and the other displaying the current mode: sand or normal)
 
+### date 5/28/24
+
+Worked on Grid class; Coded spawnBlocks, which takes a random tetromino from a "bag" 
+(represented by the ArrayList toSpawn) and sets the instance variable curr to said tetromino.
+
 
 ## GROUP MEMBER 2 (IVY ZHU)
 
