@@ -43,7 +43,8 @@ public class Grid {
    if (type.equals("Z")) { tetri = new Z(); }
   }
   
- 
+  
+  // Ivy's code
 
 public void run(){
   drawBlock(tetri, tetri.c, 0);

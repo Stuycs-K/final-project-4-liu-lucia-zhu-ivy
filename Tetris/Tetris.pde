@@ -45,3 +45,25 @@ void rectBorder(int w, int h, int x, int y) {
 void draw(){
   g.run();
 }
+
+public void keyPressed(){
+  g.drawBlock(g.tetri, 0, 255);
+    if(key == CODED){
+      if(keyCode == UP){
+        g.tetri.up();
+      }
+      if(keyCode == DOWN){
+        g.tetri.down();
+      }
+      if(keyCode == LEFT){
+        g.tetri.left();
+      }
+      if(keyCode == RIGHT){
+        g.tetri.right();
+      }
+      if(keyCode == 32){
+        g.tetri.space();
+      }
+    }
+    g.drawBlock(g.tetri, g.tetri.c, 0);
+  }

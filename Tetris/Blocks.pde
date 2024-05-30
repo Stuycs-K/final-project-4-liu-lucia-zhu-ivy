@@ -16,26 +16,6 @@ class Blocks{
     block = new int[row][col];
   }
   
-    public void keyPressed(){
-    if(key == CODED){
-      if(keyCode == UP){
-        up();
-      }
-      if(keyCode == DOWN){
-        down();
-      }
-      if(keyCode == LEFT){
-        left();
-      }
-      if(keyCode == RIGHT){
-        right();
-      }
-      if(keyCode == 32){
-        space();
-      }
-    }
-  }
-  
   public void up(){
     // rotates block
   }
