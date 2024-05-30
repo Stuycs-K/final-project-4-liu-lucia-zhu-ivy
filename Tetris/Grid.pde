@@ -45,14 +45,13 @@ public class Grid {
  
 
 public void run(){
-  Blocks curr = new I();
+  Blocks curr = new S();
   int[][] blocks = curr.block;
   for (int i = 0; i < blocks.length; i++){
     for (int j = 0; j < blocks[0].length; j++){
       if(blocks[i][j] == 1){
-        int x = curr.x+i;
-        int y = curr.y+j;
-        grid[x][y] = 1;
+        int x = curr.x+j - blocks[0].length/2;
+        int y = curr.y+i;
         fill(curr.c);
         display(x,y);
       }
