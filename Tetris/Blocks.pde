@@ -26,11 +26,20 @@ class Blocks{
   }
   
   public void left(){
-    x--;
+    if (x - block[0].length/2 > 0){
+      x--;
+    }
   }
   
   public void right(){
-    x++;
+    if (block[0].length == 3){
+      if (x < 8){
+        x++;
+      }
+    }
+    else if (x + block[0].length/2 < 10){
+      x++;
+    }
   }
   
   public void space(){

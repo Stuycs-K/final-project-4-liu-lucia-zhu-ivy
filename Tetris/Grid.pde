@@ -48,10 +48,10 @@ public class Grid {
 
 public void run(){
   drawBlock(tetri, tetri.c, 0);
-  delay(1000);
-  drawBlock(tetri, 0, 255);
-  tetri.down();
-  drawBlock(tetri, tetri.c, 0);
+  //delay(1000);
+  //drawBlock(tetri, 0, 255);
+  //tetri.down();
+  //drawBlock(tetri, tetri.c, 0);
 }
 
 public void display(int x, int y){

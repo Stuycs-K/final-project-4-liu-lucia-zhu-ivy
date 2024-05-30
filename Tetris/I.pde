@@ -9,6 +9,9 @@ class I extends Blocks{
   }
   
   public void up(){
+    if (y < 3){
+      return;
+    }
     if (flip){
       for (int i = 0; i < 4; i++){
         block = new int[4][1];
