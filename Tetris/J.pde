@@ -11,6 +11,7 @@ class J extends Blocks{
   
   public void up(){
     flip = (flip + 1) % 4;
+    // grid changes based on parity
     if (flip % 2 == 0){
        block = new int[2][3];
        if(x == 9){
@@ -19,6 +20,7 @@ class J extends Blocks{
     }else{
       block = new int[3][2];
     }
+    // fill in block
     if (flip == 0){
       block[0][0] = 1;
       for (int i = 0; i < 3; i++){
