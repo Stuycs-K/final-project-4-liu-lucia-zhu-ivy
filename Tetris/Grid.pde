@@ -47,7 +47,11 @@ public class Grid {
   // Ivy's code
 
 public void run(){
-  drawBlock(tetri, tetri.c, 0);
+  //System.out.println(tetri.active);
+  if (tetri.active == true) {
+    //System.out.println(tetri.y);
+    drawBlock(tetri, tetri.c, 0);
+  }
   //delay(1000);
   //drawBlock(tetri, 0, 255);
   //tetri.down();
@@ -59,18 +63,26 @@ public void display(int x, int y){
 }
 
 public void drawBlock(Blocks tetri, color c, color s){
-  int[][] blocks = tetri.block;
-  for (int i = 0; i < blocks.length; i++){
-    for (int j = 0; j < blocks[0].length; j++){
-      if(blocks[i][j] == 1){
-        int x = tetri.x+j - blocks[0].length/2;
-        int y = tetri.y+i;
-        stroke(s);
-        fill(c);
-        display(x,y);
+    int[][] blocks = tetri.block;
+    for (int i = 0; i < blocks.length; i++){
+      for (int j = 0; j < blocks[0].length; j++){
+        if(blocks[i][j] == 1){
+          int x = tetri.x+j - blocks[0].length/2;
+          int y = tetri.y+i;
+          System.out.println(x + ", " + y);
+          System.out.println("Tetri y: " + tetri.y);
+            stroke(s);
+            fill(c);
+            display(x,y);
+            if (tetri.y >= 19) {
+              grid[x][y] = 2;
+         
+              tetri.active = false;
+            }
+          }
+        }
       }
-    }
-  }
 }
+
 
 }
