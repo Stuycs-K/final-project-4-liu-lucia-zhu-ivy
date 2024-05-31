@@ -7,13 +7,12 @@ class Blocks{
   public int[][] block;
   public final int pixSize = 43;
   
-  public Blocks(String name, int row, int col){
+  public Blocks(String name){
     type = name;
     speed = 1;
     x = 5;
     y = 0;
     c = color(random(255), random(255), random(255));
-    block = new int[row][col];
   }
   
   public void up(){
@@ -37,7 +36,7 @@ class Blocks{
         x++;
       }
     }
-    else if (x + block[0].length/2 < 10){
+    else if (x + (block[0].length+1)/2 < 10){
       x++;
     }
   }

@@ -1,12 +1,9 @@
 class S extends Blocks{
-  private boolean flip = true;
+  private boolean flip = false;
   
   public S(){
-    super("S", 2, 3);
-    block[0][1] = 1;
-    block[0][2] = 1;
-    block[1][0] = 1;
-    block[1][1] = 1;
+    super("S");
+    up();
   }
   
   public void up(){

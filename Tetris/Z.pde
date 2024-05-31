@@ -2,7 +2,7 @@ class Z extends Blocks{
   private boolean flip = false;
   
   public Z(){
-    super("Z", 3, 3);
+    super("Z");
     block[0][0] = 1;
     block[0][1] = 1;
     block[1][1] = 1;

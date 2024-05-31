@@ -2,15 +2,11 @@ class L extends Blocks{
   private int flip = 0;
   
   public L(){
-    super("L", 2, 3);
-    block[1][0] = 1;
-    for (int i = 0; i < 3; i++){
-      block[0][i] = 1;
-    }
+    super("L");
+    up();
   }
   
     public void up(){
-    flip = (flip + 1) % 4;
     // grid changes based on parity
     if (flip % 2 == 0){
        block = new int[2][3];
@@ -42,7 +38,7 @@ class L extends Blocks{
         block[i][1] = 1;
       }
     }
-    
+    flip = (flip + 1) % 4;
   }
 }
   
