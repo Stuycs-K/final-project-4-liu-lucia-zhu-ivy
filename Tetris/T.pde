@@ -24,15 +24,15 @@ class T extends Blocks{
       }
     }
     if (flip == 1){
-      block[1][2] = 1;
+      block[1][1] = 1;
       for (int i = 0; i < 3; i++){
-        block[i][1] = 1;
+        block[i][0] = 1;
       }
     }
     if (flip == 2){
-      block[2][1] = 1;
+      block[1][1] = 1;
       for (int i = 0; i < 3; i++){
-        block[1][i] = 1;
+        block[0][i] = 1;
       }
     }
     if (flip == 3){
