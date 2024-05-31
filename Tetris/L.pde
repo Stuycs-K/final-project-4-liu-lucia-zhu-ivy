@@ -16,7 +16,7 @@ class L extends Blocks{
        block = new int[2][3];
        if(x == 9){
         x--;
-      }
+       }
     }else{
       block = new int[3][2];
     }

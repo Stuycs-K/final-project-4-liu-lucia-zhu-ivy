@@ -1,8 +1,8 @@
 class S extends Blocks{
-  private boolean flip = false;
+  private boolean flip = true;
   
   public S(){
-    super("S", 3, 3);
+    super("S", 2, 3);
     block[0][1] = 1;
     block[0][2] = 1;
     block[1][0] = 1;
@@ -10,17 +10,21 @@ class S extends Blocks{
   }
   
   public void up(){
-    block = new int[3][3];
     if (flip){
-      block[0][1] = 1;
+      block = new int[3][2];
+      block[0][0] = 1;
+      block[1][0] = 1;
       block[1][1] = 1;
-      block[1][2] = 1;
-      block[2][2] = 1;
+      block[2][1] = 1;
     } else{
+      block = new int[2][3];
       block[0][1] = 1;
       block[0][2] = 1;
       block[1][0] = 1;
       block[1][1] = 1;
+      if(x == 9){
+        x--;
+      }
     }
     flip = !flip;
   }

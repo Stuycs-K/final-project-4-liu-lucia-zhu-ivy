@@ -1,7 +1,7 @@
 public class Grid {
   int[][] grid;
   ArrayList<String> toSpawn;
-  public Blocks tetri = new L();
+  public Blocks tetri = new S();
 
   // creates an griday representing the playable grid
   public Grid() { 
