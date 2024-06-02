@@ -93,7 +93,8 @@ public color findColor(int c) {
       while (tetri.block[i][j] == 0) {
         j++;
       }
-      if (grid.get(19 - ii)[j + tetri.x - 1] != 0) {
+      if (j + tetri.x - 1 >= 0 && 
+      grid.get(19 - ii)[j + tetri.x - 1] != 0) {
         ans = false;
       }
     }
@@ -109,7 +110,8 @@ public color findColor(int c) {
       while (tetri.block[i][j] == 0) {
         j--;
       }
-      if (grid.get(19 - ii)[j + tetri.x + 1] != 0) {
+      if (j + tetri.x + 1 <= 9 &&
+      grid.get(19 - ii)[j + tetri.x + 1] != 0) {
         ans = false;
       }
     }

@@ -3,6 +3,7 @@
 int points;
 int time;
 int linesCleared;
+boolean playing;
 Grid g;
 
 
@@ -13,15 +14,27 @@ void setup() {
   size(1500, 900);
   g = new Grid();
   drawSigns();
+  playing = false;
 }
 
+// PRESS P TO TOGGLE BTWN PLAYING AND PAUSE
+// Q = QUIT and will clear the grid
 void draw(){
-  g.run();
+  if (playing) {
+    g.run();
+  }
 }
 
 public void keyPressed(){
-  g.drawBlock(0);
+    if (key == 'p') {
+      playing = !playing;
+    }
+    if (key == 'q') {
+      playing = false;
+      quit();
+    }
     if(key == CODED){
+      g.drawBlock(0);
       if(keyCode == UP){
         g.tetri.up();
       }
@@ -37,13 +50,22 @@ public void keyPressed(){
       if(keyCode == 32){
         g.tetri.space();
       }
+      g.drawBlock(g.findColor(g.tetri.c));
     }
-   g.drawBlock(g.findColor(g.tetri.c));
   }
   
   
 //=====HELPER FUNCTIONS=====//
 
+void quit() {
+  fill(0);
+  stroke(255);
+  for (int i = 530; i <= 917; i = i + 43) {
+    for (int j = 20; j <= 860; j = j + 43) {
+      rect(i, j, 43, 43);
+    }
+  }
+}
 
 void drawSigns() {
   rectBorder(450, 880, 520, 10); // grid border + grid lines
