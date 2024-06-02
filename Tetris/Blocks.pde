@@ -6,14 +6,12 @@ class Blocks{
   public color c;
   public int[][] block;
   public final int pixSize = 43;
-  public boolean active;
   
   public Blocks(String name){
     type = name;
     speed = 1;
     x = 5;
     y = 0;
-    active = true;
     c = color(random(255), random(255), random(255));
   }
   
