@@ -8,7 +8,7 @@ Created the Tetris, Blocks, and Grid classes; pushed it to Git. Figuring out mer
 
 ### date 5/23/24
 
-Created Tetris playing grid (20 x 10 blocks), where is where blocks will appear and drop. 
+Created Tetris playing grid (20 x 10 blocks), which is where blocks will appear and drop. 
 
 ### date 5/24/24
 
@@ -24,12 +24,21 @@ Added 2 more signs (one showing block statistics and the other displaying the cu
 Worked on Grid class; Coded spawnBlocks, which takes a random tetromino from a "bag" 
 (represented by the ArrayList toSpawn) and sets the instance variable curr to said tetromino.
 
-### date 6/2/24
+### date 6/1/24
 
 Worked on Grid class; ran into a couple of problems, such as slow speed when the fall() mechanics
 is implemented, plus the trail that the tetromino leaves behind as it falls. Currently 
 trying to incorporate tetrominos into the grid once they reach the bottom. Also trying to change
 the 2D array to an ArrayList of arrays. 
+
+### date 6/2/24
+
+Fixed a bunch of bugs, such as index error bounds involving moving a block left, right, or down
+Successfully incorporated blocks (specifically their colors) into grid once they hit the bottom.
+Changed the grid 2D array into an ArrayList of arrays.
+Implemented the lineClearing mechanism. 
+Displayed points earned, number of lines cleared, instructions + pausing and quitting
+Now we have a working Tetris game
 
 
 ## GROUP MEMBER 2 (IVY ZHU)
