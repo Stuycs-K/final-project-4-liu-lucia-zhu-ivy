@@ -24,6 +24,13 @@ Added 2 more signs (one showing block statistics and the other displaying the cu
 Worked on Grid class; Coded spawnBlocks, which takes a random tetromino from a "bag" 
 (represented by the ArrayList toSpawn) and sets the instance variable curr to said tetromino.
 
+### date 6/2/24
+
+Worked on Grid class; ran into a couple of problems, such as slow speed when the fall() mechanics
+is implemented, plus the trail that the tetromino leaves behind as it falls. Currently 
+trying to incorporate tetrominos into the grid once they reach the bottom. Also trying to change
+the 2D array to an ArrayList of arrays. 
+
 
 ## GROUP MEMBER 2 (IVY ZHU)
 
