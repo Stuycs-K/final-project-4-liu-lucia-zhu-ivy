@@ -63,8 +63,18 @@ public void run(){
       drawBlock(0);
     }
      tetri.fall();
-     drawBlock(tetri.c);
+     drawBlock(findColor(tetri.c));
   }
+}
+
+public color findColor(int c) {
+  if (c == 0) { return color(48, 213, 200); }
+  if (c == 1) { return color(0, 0, 255); }
+  if (c == 2) { return color(255, 165, 0); }
+  if (c == 3) { return color(255, 255, 0); }
+  if (c == 4) { return color(170, 255, 0); }
+  if (c == 5) { return color(191, 64, 191); }
+  return color(255, 0, 0); 
 }
 
 public boolean shouldStop() {

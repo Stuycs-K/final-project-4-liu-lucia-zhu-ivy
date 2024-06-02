@@ -38,7 +38,7 @@ public void keyPressed(){
         g.tetri.space();
       }
     }
-   g.drawBlock(g.tetri.c);
+   g.drawBlock(g.findColor(g.tetri.c));
   }
   
   

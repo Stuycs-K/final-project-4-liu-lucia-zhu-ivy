@@ -3,6 +3,7 @@ class J extends Blocks{
   
   public J(){
     super("J");
+    c = 1;
     x = 4;
     up();
   }

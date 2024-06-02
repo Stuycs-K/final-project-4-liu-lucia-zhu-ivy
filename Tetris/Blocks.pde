@@ -4,7 +4,7 @@ class Blocks{
   private double speed;
   public int x,y;
   public int lowest_y;
-  public color c;
+  public int c;
   public int[][] block;
   public final int pixSize = 43;
   public int b_time;
@@ -14,7 +14,6 @@ class Blocks{
     speed = 1;
     y = 0;
     b_time = millis() + 1000;
-    c = color(random(255), random(255), random(255));
   }
   
   void fall() {
