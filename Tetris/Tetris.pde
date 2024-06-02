@@ -67,6 +67,10 @@ void quit() {
   }
 }
 
+void lose() {
+  // will be implemented
+}
+
 void drawSigns() {
   rectBorder(450, 880, 520, 10); // grid border + grid lines
   stroke(255);
