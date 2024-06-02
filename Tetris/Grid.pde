@@ -5,7 +5,7 @@ public class Grid {
   //int[][] grid;
   ArrayList<int[]> grid;
   ArrayList<String> toSpawn;
-  int[] rowSum;
+  ArrayList<Integer> rowSum;
   public Blocks tetri;
   public boolean stop;
   int points;
@@ -14,10 +14,11 @@ public class Grid {
   public Grid() { 
     //grid = new int[20][10];
     grid = new ArrayList<int[]>();
+    rowSum = new ArrayList<Integer>();
     for (int i = 0; i < 20; i++) {
       grid.add(new int[10]);
+      rowSum.add(0);
     }
-    rowSum = new int[20];
     toSpawn = new ArrayList<String>();
     points = 0;
     tetri = new J();
@@ -90,29 +91,27 @@ public boolean shouldStop() {
       }
       iy++;
       iy += tetri.y;
-        if(grid.get(iy)[ix] == 1){
+        if(grid.get(19 - iy)[ix] == 1){
           ans = true;
         }
       }
       return ans;
   }
- 
-  
 
-public void display(int x, int y){
+public void display(int x, int y, color c){
+  fill(c);
+  stroke(255);
   square(x*43 + 530, y*43 + 20, 43);
 }
 
 
 public void drawBlock(color c) {
-  fill(c);
-  stroke(255);
   for (int i = 0; i < tetri.block.length; i++){ // y
       for (int j = 0; j < tetri.block[0].length; j++){ // x
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
           int y = tetri.y+i;
-          display(x, y);
+          display(x, y, c);
         }
       }
   }
@@ -125,10 +124,10 @@ public ArrayList<Integer> inputBlock() {
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
           int y = tetri.y+i;
-          grid.get(y)[x] = tetri.c;
-          rowSum[y]++;
-          if (rowSum[y] == 10) {
-            ans.add(y);
+          grid.get(19 - y)[x] = tetri.c;
+          rowSum.set(19 - y, rowSum.get(19 - y) + 1);
+          if (rowSum.get(19 - y) == 10) {
+            ans.add(19 - y);
           }
         }
       }
@@ -138,6 +137,7 @@ public ArrayList<Integer> inputBlock() {
 
 public void clearLine(ArrayList<Integer> rows) {
   int n = rows.size();
+  int low = rows.get(n - 1);
   // implements clearing the line(s)
   if (n > 0) {
     if (n == 1) {
@@ -154,7 +154,18 @@ public void clearLine(ArrayList<Integer> rows) {
     }
   }
   while (n > 0) {
-    
+    int deleted = rows.remove(0);
+    grid.remove(deleted);
+    grid.add(new int[10]);
+    rowSum.remove(deleted);
+    rowSum.add(0);
+    n--;
+  }
+  for (int i = low; i < 20; i++) { 
+    for (int j = 0; j < 10; j++) { 
+      display(19 - i, j, findColor(grid.get(i)[j]));
+    }
+  }
 }
 
 }
