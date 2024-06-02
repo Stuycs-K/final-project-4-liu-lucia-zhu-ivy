@@ -2,7 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class Grid {
-  int[][] grid;
+  //int[][] grid;
+  ArrayList<int[]> grid;
   ArrayList<String> toSpawn;
   int[] rowSum;
   public Blocks tetri;
@@ -11,7 +12,11 @@ public class Grid {
 
   // creates an grid representing the playable grid
   public Grid() { 
-    grid = new int[20][10];
+    //grid = new int[20][10];
+    grid = new ArrayList<int[]>();
+    for (int i = 0; i < 20; i++) {
+      grid.add(new int[10]);
+    }
     rowSum = new int[20];
     toSpawn = new ArrayList<String>();
     points = 0;
@@ -75,7 +80,7 @@ public boolean shouldStop() {
       }
       iy++;
       iy += tetri.y;
-        if(grid[iy][ix] == 1){
+        if(grid.get(iy)[ix] == 1){
           ans = true;
         }
       }
@@ -110,7 +115,7 @@ public ArrayList<Integer> inputBlock() {
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
           int y = tetri.y+i;
-          grid[y][x] = 1; 
+          grid.get(y)[x] = 1;
           rowSum[y]++;
           if (rowSum[y] == 10) {
             ans.add(y);
@@ -137,6 +142,7 @@ public void clearLine(ArrayList<Integer> rows) {
     if (rows.size() == 4) {
       points += 1200;
     }
+  }
 }
 
 }
