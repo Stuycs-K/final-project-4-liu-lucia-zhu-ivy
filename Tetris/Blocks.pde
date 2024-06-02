@@ -31,8 +31,10 @@ class Blocks{
   
   public void down(){
     // moves block down one unit
-    y++;
-    lowest_y++;
+    if (lowest_y < 19) {
+      y++;
+      lowest_y++;
+    }
   }
   
   public void left(){

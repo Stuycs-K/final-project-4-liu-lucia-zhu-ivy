@@ -4,13 +4,17 @@ import java.io.*;
 public class Grid {
   int[][] grid;
   ArrayList<String> toSpawn;
+  int[] rowSum;
   public Blocks tetri;
   public boolean stop;
+  int points;
 
   // creates an grid representing the playable grid
   public Grid() { 
     grid = new int[20][10];
+    rowSum = new int[20];
     toSpawn = new ArrayList<String>();
+    points = 0;
     tetri = new J();
     refill();
   }
@@ -44,8 +48,6 @@ public class Grid {
   // Ivy's code
 
 public void run(){
-  //System.out.println(tetri.y);
-  //System.out.println(tetri.lowest_y);
   if (shouldStop()) {
     delay(700);
     inputBlock();
@@ -61,13 +63,10 @@ public void run(){
 }
 
 public boolean shouldStop() {
-  if (tetri.lowest_y == 19) {
+  if (tetri.lowest_y >= 19) {
     return true;
   }
   boolean ans = false;
-  //for (int i = 0; i < tetri.block.length; i++){
-  //int iy = tetri.y+i + 1;
-  // - tetri.block[0].length/2 - 1;
       for (int j = 0; j < tetri.block[0].length; j++){
       int iy = tetri.block.length - 1;
       int ix = tetri.x+j;
@@ -97,32 +96,47 @@ public void drawBlock(color c) {
       for (int j = 0; j < tetri.block[0].length; j++){ // x
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
-          // - tetri.block[0].length/2;
           int y = tetri.y+i;
           display(x, y);
-          //System.out.println("pos: " + x + " " + y);
-          //System.out.println("lowest_y: " + tetri.lowest_y);
         }
       }
   }
 }
 
-public void inputBlock() {
+public ArrayList<Integer> inputBlock() {
+  ArrayList<Integer> ans = new ArrayList<Integer>();
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
-          //- tetri.block[0].length/2;
           int y = tetri.y+i;
           grid[y][x] = 1; 
+          rowSum[y]++;
+          if (rowSum[y] == 10) {
+            ans.add(y);
+          }
           System.out.println("Inputted 1 in " + y + " " + x);
         }
       }
   }
+  return ans;
 }
 
-public void clearLine() {
+public void clearLine(ArrayList<Integer> rows) {
   // implements clearing the line(s)
+  if (rows.size() > 0) {
+    if (rows.size() == 1) {
+      points += 100;
+    }
+    if (rows.size() == 2) {
+      points += 300;
+    }
+    if (rows.size() == 3) {
+      points += 500;
+    }
+    if (rows.size() == 4) {
+      points += 1200;
+    }
 }
 
 }
