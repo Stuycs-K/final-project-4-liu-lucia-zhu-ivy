@@ -1,6 +1,7 @@
 class O extends Blocks{
   public O(){
     super("O");
+    x = 4;
     block = new int[2][2];
     lowest_y = y + 1;
     for (int i = 0; i < 2; i++){

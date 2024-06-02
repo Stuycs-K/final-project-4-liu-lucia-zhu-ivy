@@ -12,7 +12,6 @@ class Blocks{
   public Blocks(String name){
     type = name;
     speed = 1;
-    x = 5;
     y = 0;
     b_time = millis() + 1000;
     c = color(random(255), random(255), random(255));
@@ -44,13 +43,20 @@ class Blocks{
   
   public void right(){
     if (block[0].length == 3){
-      if (x < 8){
+      if (x < 7){
         x++;
       }
     }
-    else if (x + (block[0].length+1)/2 < 10){
-      x++;
+    else if (block[0].length == 1){
+      if (x < 9) {
+        x++;
+      }
     }
+    else {
+      if (x < 8) {
+        x++;
+      }
+  }
   }
   
   public void space(){
