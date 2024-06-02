@@ -19,6 +19,9 @@ void setup() {
 // Q = QUIT and will clear the grid
 void draw(){
   fill(255);
+  textSize(30);
+  text("Press 'p' to play or pause", 1050, 420);
+  text("Press 'q' to quit", 1050, 460);
   textSize(40);
   text("Points:", 1100, 70);
   text("" + g.points, 1100, 130);
@@ -62,10 +65,12 @@ public void keyPressed(){
 //=====HELPER FUNCTIONS=====//
 
 void quit() {
-  fill(0);
-  stroke(255);
   g.points = 0;
   g.linesCleared = 0;
+  rectBorder(400, 150, 1000, 20);
+  rectBorder(400, 150, 1000, 190);
+  fill(0);
+  stroke(255);
   for (int i = 530; i <= 917; i = i + 43) {
     for (int j = 20; j <= 860; j = j + 43) {
       rect(i, j, 43, 43);
