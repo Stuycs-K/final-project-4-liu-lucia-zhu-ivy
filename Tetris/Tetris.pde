@@ -18,6 +18,12 @@ void setup() {
 // PRESS P TO TOGGLE BTWN PLAYING AND PAUSE
 // Q = QUIT and will clear the grid
 void draw(){
+  fill(255);
+  textSize(40);
+  text("Points:", 1100, 70);
+  text("" + g.points, 1100, 130);
+  text("Lines Cleared:", 1100, 250);
+  text("" + g.linesCleared, 1100, 300);
   if (playing) {
     g.run();
   }
@@ -58,6 +64,8 @@ public void keyPressed(){
 void quit() {
   fill(0);
   stroke(255);
+  g.points = 0;
+  g.linesCleared = 0;
   for (int i = 530; i <= 917; i = i + 43) {
     for (int j = 20; j <= 860; j = j + 43) {
       rect(i, j, 43, 43);

@@ -58,6 +58,8 @@ public void run(){
   if (shouldStop()) {
     delay(700);
     if (clearLine(inputBlock())) {
+      rectBorder(400, 150, 1000, 20);
+      rectBorder(400, 150, 1000, 190);
       delay(700);
     }
     spawnNew();
