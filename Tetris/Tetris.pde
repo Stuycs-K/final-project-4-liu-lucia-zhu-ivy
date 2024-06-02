@@ -16,7 +16,7 @@ void setup() {
 }
 
 void draw(){
-  g.draw();
+  g.run();
 }
 
 public void keyPressed(){
@@ -46,7 +46,14 @@ public void keyPressed(){
 
 
 void drawSigns() {
-  rectBorder(450, 880, 520, 10); // grid border
+  rectBorder(450, 880, 520, 10); // grid border + grid lines
+  stroke(255);
+  for (int i = 530; i <= 917; i = i + 43) {
+    for (int j = 20; j <= 860; j = j + 43) {
+      rect(i, j, 43, 43);
+    }
+  }
+  stroke(0);
   rectBorder(400, 150, 1000, 20); // top score sign
   rectBorder(400, 150, 1000, 190); // current score sign
   rectBorder(400, 150, 1000, 360); // time sign

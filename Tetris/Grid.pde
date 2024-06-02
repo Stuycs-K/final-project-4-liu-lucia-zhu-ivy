@@ -2,24 +2,19 @@ import java.util.*;
 import java.io.*;
 
 public class Grid {
-  String[][] grid;
+  int[][] grid;
   ArrayList<String> toSpawn;
   public Blocks tetri;
 
   // creates an grid representing the playable grid
   public Grid() { 
-    grid = new String[22][12];
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid[0].length; j++) {
-        grid[i][j] = "0";
-      }
-    }
+    grid = new int[22][12];
     for (int i = 0; i < grid.length; i++){
-      grid[i][0] = "2";
-      grid[i][11] = "2";
+      grid[i][0] = 2;
+      grid[i][11] = 2;
     }
     for (int i = 0; i < grid[0].length; i++){
-      grid[21][i] = "2";
+      grid[21][i] = 2;
     }
     toSpawn = new ArrayList<String>();
     tetri = new J();
@@ -54,56 +49,61 @@ public class Grid {
   
   // Ivy's code
 
-public void draw(){
-    tetri.draw();
-    drawGrid();
+public void run(){
+    //tetri.draw();
+    drawBlock();
 }
 
 public void display(int x, int y){
-  stroke(255);
   square(x*43 + 530, y*43 + 20, 43);
 }
 
-public void drawGrid() {
-  //Blocks hey = new Blocks("J");
-  inputBlock(tetri);
+//public void drawGrid() {
+//  inputBlock(tetri);
+//  stroke(255);
+//  for (int i = 1; i <= 20; i++) {
+//    for (int j = 1; j <= 10; j++) {
+//      if (grid[i][j] == 0) {
+//        //System.out.println("true");
+//        fill(0);
+//      }
+//      else if (grid[i][j] == 1) {
+//        fill(tetri.c);
+//        grid[i][j] = 0;
+//      }
+//      else {
+//        fill(find_color(i, j));
+//      }
+//      display(j - 1, i - 1);
+//    }
+//  }
+//}
+
+public void drawBlock() {
+  fill(tetri.c);
   stroke(255);
-  for (int i = 1; i <= 20; i++) {
-    for (int j = 1; j <= 10; j++) {
-      if (grid[i][j].equals("0")) {
-        //System.out.println("true");
-        fill(0);
+  for (int i = 0; i < tetri.block.length; i++){
+      for (int j = 0; j < tetri.block[0].length; j++){
+        if(tetri.block[i][j] == 1){
+          int x = tetri.x+j - tetri.block[0].length/2;
+          int y = tetri.y+i + 1;
+          display(x, y);
+        }
       }
-      else if (grid[i][j].equals("1")) {
-        fill(tetri.c);
-        grid[i][j] = "0";
-      }
-      else {
-        fill(find_color(i, j));
-      }
-      display(j - 1, i - 1);
-    }
   }
 }
 
 
 public void inputBlock(Blocks t) {
-   int[][] blocks = t.block;
-   for (int i = 0; i < blocks.length; i++) {
-      System.out.println(Arrays.toString(blocks[i]));
-    }
-  for (int i = 0; i < blocks.length; i++){
-      for (int j = 0; j < blocks[0].length; j++){
-        if(blocks[i][j] == 1){
-          int x = tetri.x+j - blocks[0].length/2;
+  for (int i = 0; i < t.block.length; i++){
+      for (int j = 0; j < t.block[0].length; j++){
+        if(t.block[i][j] == 1){
+          int x = tetri.x+j - t.block[0].length/2;
           int y = tetri.y+i + 1;
-          grid[y][x] = "1";
+          grid[y][x] = 1; // if-statements depending on color?
         }
       }
   }
-   for (int i = 0; i < grid.length; i++) {
-      System.out.println(Arrays.toString(grid[i]));
-    }
 }
 
 public color find_color(int x, int y) {
