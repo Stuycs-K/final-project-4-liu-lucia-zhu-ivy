@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class Grid {
   String[][] grid;
   ArrayList<String> toSpawn;
@@ -6,6 +9,11 @@ public class Grid {
   // creates an grid representing the playable grid
   public Grid() { 
     grid = new String[22][12];
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[0].length; j++) {
+        grid[i][j] = "0";
+      }
+    }
     for (int i = 0; i < grid.length; i++){
       grid[i][0] = "2";
       grid[i][11] = "2";
@@ -14,6 +22,7 @@ public class Grid {
       grid[21][i] = "2";
     }
     toSpawn = new ArrayList<String>();
+    tetri = new J();
     refill();
   }
   
@@ -46,42 +55,59 @@ public class Grid {
   // Ivy's code
 
 public void draw(){
-    drawBlock(tetri, tetri.c, 0);
+    tetri.draw();
+    drawGrid();
 }
 
 public void display(int x, int y){
+  stroke(255);
   square(x*43 + 530, y*43 + 20, 43);
 }
 
-public void inputBlock(Blocks tetri) {
-  int[][] blocks = tetri.block;
+public void drawGrid() {
+  //Blocks hey = new Blocks("J");
+  inputBlock(tetri);
+  stroke(255);
+  for (int i = 1; i <= 20; i++) {
+    for (int j = 1; j <= 10; j++) {
+      if (grid[i][j].equals("0")) {
+        //System.out.println("true");
+        fill(0);
+      }
+      else if (grid[i][j].equals("1")) {
+        fill(tetri.c);
+        grid[i][j] = "0";
+      }
+      else {
+        fill(find_color(i, j));
+      }
+      display(j - 1, i - 1);
+    }
+  }
+}
+
+
+public void inputBlock(Blocks t) {
+   int[][] blocks = t.block;
+   for (int i = 0; i < blocks.length; i++) {
+      System.out.println(Arrays.toString(blocks[i]));
+    }
   for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
         if(blocks[i][j] == 1){
           int x = tetri.x+j - blocks[0].length/2;
-          int y = tetri.y+i;
-          grid[x][y] = "1";
+          int y = tetri.y+i + 1;
+          grid[y][x] = "1";
         }
       }
   }
+   for (int i = 0; i < grid.length; i++) {
+      System.out.println(Arrays.toString(grid[i]));
+    }
 }
 
-public void drawGrid() {
-  inputBlock(tetri);
-  stroke(255);
-  for (int i = 0; i <= 20; i = i++) {
-    for (int j = 0; j <= 10; j = j++) {
-      if (grid[i][j].equals("0")) {
-        fill(0);
-      }
-      if (grid[i][j].equals("1")) {
-        fill(tetri.c);
-      }
-      if (grid[i][j].equals("2")) {
-        fill
-      rect(i, j, 43, 43);
-    }
-  }
+public color find_color(int x, int y) {
+  return color(100);
 }
 }
 

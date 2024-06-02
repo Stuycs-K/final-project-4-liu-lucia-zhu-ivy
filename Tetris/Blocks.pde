@@ -15,6 +15,11 @@ class Blocks{
     c = color(random(255), random(255), random(255));
   }
   
+  void draw() {
+    delay(1000);
+    y++;
+  }
+  
   public void up(){
     // rotates block
   }

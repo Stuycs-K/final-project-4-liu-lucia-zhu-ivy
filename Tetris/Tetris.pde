@@ -12,7 +12,6 @@ Grid g;
 void setup() {
   size(1500, 900);
   g = new Grid();
-  drawGrid();
   drawSigns();
 }
 
@@ -21,7 +20,7 @@ void draw(){
 }
 
 public void keyPressed(){
-  g.drawBlock(g.tetri, 0, 255);
+  //g.drawBlock(g.tetri, 0, 255);
     if(key == CODED){
       if(keyCode == UP){
         g.tetri.up();
@@ -39,22 +38,12 @@ public void keyPressed(){
         g.tetri.space();
       }
     }
-    g.drawBlock(g.tetri, g.tetri.c, 0);
+   // g.drawBlock(g.tetri, g.tetri.c, 0);
   }
   
   
 //=====HELPER FUNCTIONS=====//
 
-
-void drawGrid() {
-  rectBorder(450, 880, 520, 10);
-  stroke(255);
-  for (int i = 530; i <= 917; i = i + 43) {
-    for (int j = 20; j <= 860; j = j + 43) {
-      rect(i, j, 43, 43);
-    }
-  }
-}
 
 void drawSigns() {
   rectBorder(450, 880, 520, 10); // grid border
