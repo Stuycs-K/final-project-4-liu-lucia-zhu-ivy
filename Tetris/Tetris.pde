@@ -28,10 +28,10 @@ public void keyPressed(){
       if(keyCode == DOWN){
         g.tetri.down();
       }
-      if(keyCode == LEFT){
+      if(keyCode == LEFT && g.canShiftLeft()){
         g.tetri.left();
       }
-      if(keyCode == RIGHT){
+      if(keyCode == RIGHT && g.canShiftRight()){
         g.tetri.right();
       }
       if(keyCode == 32){

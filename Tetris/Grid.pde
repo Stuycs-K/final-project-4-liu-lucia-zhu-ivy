@@ -56,7 +56,9 @@ public class Grid {
 public void run(){
   if (shouldStop()) {
     delay(700);
-    inputBlock();
+    if (clearLine(inputBlock())) {
+      delay(700);
+    }
     spawnNew();
   }
   else {
@@ -75,8 +77,38 @@ public color findColor(int c) {
   if (c == 4) { return color(255, 255, 0); }
   if (c == 5) { return color(170, 255, 0); }
   if (c == 6) { return color(191, 64, 191); }
-  return color(255, 0, 0); 
+  if (c == 7) { return color(255, 0, 0); }
+  else { return color(0); }
 }
+ public boolean canShiftLeft() {
+   boolean ans = true;
+    for (int i = 0; i < tetri.block.length; i++) {
+      int ii = tetri.y + i;
+      int j = 0;
+      while (tetri.block[i][j] == 0) {
+        j++;
+      }
+      if (grid.get(19 - ii)[j + tetri.x - 1] != 0) {
+        ans = false;
+      }
+    }
+    return ans;
+  }
+  
+  public boolean canShiftRight() {
+    boolean ans = true;
+    for (int i = 0; i < tetri.block.length; i++) {
+      int ii = tetri.y + i;
+      int j = tetri.block[0].length - 1;
+      while (tetri.block[i][j] == 0) {
+        j--;
+      }
+      if (grid.get(19 - ii)[j + tetri.x + 1] != 0) {
+        ans = false;
+      }
+    }
+    return ans;
+  }
 
 public boolean shouldStop() {
   if (tetri.lowest_y >= 19) {
@@ -136,11 +168,11 @@ public ArrayList<Integer> inputBlock() {
   return ans;
 }
 
-public void clearLine(ArrayList<Integer> rows) {
+public boolean clearLine(ArrayList<Integer> rows) {
+  if (rows.size() > 0) {
   int n = rows.size();
   int low = rows.get(n - 1);
   // implements clearing the line(s)
-  if (n > 0) {
     if (n == 1) {
       points += 100;
     }
@@ -153,7 +185,6 @@ public void clearLine(ArrayList<Integer> rows) {
     if (n == 4) {
       points += 1200;
     }
-  }
   while (n > 0) {
     int deleted = rows.remove(0);
     grid.remove(deleted);
@@ -164,9 +195,12 @@ public void clearLine(ArrayList<Integer> rows) {
   }
   for (int i = low; i < 20; i++) { 
     for (int j = 0; j < 10; j++) { 
-      display(19 - i, j, findColor(grid.get(i)[j]));
+      display(j, 19 - i, findColor(grid.get(i)[j]));
     }
   }
+  return true;
+}
+return false;
 }
 
 }

@@ -43,22 +43,23 @@ class Blocks{
   }
   
   public void right(){
-    if (block[0].length == 3){
-      if (x < 7){
-        x++;
+      if (block[0].length == 3){
+        if (x < 7){
+          x++;
+        }
       }
-    }
-    else if (block[0].length == 1){
-      if (x < 9) {
-        x++;
+      else if (block[0].length == 1){
+        if (x < 9) {
+          x++;
+        }
       }
-    }
-    else {
-      if (x < 8) {
-        x++;
+      else {
+        if (x < 8) {
+          x++;
+        }
       }
   }
-  }
+  
   
   public void space(){
     // block down immediately
