@@ -28,10 +28,13 @@ void setup() {
   rectBorder(300, 300, 30, 20); // up-next block displayer
   rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
   rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
+ 
   
-  Grid g = new Grid();
+}
+
+void draw() {
+   Grid g = new Grid();
   g.run();
-  
 }
 
 // draws a white-bordered black rectangle (border width: 10 px)

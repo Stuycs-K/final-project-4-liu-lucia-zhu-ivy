@@ -67,5 +67,7 @@ class Blocks{
   
   public void fall(){
     // change speed and y-cor
+    delay(1000);
+    y--;
   }
 }
