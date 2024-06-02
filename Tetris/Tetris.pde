@@ -1,8 +1,6 @@
 /// Tetris 
 
-int points;
 int time;
-int linesCleared;
 boolean playing;
 Grid g;
 

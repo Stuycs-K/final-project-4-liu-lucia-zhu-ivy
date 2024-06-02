@@ -9,6 +9,7 @@ public class Grid {
   public Blocks tetri;
   public boolean stop; // indicates when block has reached bottom or another block
   int points;
+  int linesCleared;
 
   // creates an grid representing the playable grid
   public Grid() { 
@@ -20,6 +21,7 @@ public class Grid {
     }
     toSpawn = new ArrayList<String>();
     points = 0;
+    linesCleared = 0;
     tetri = new J(); // starting block
     refill();
   }
@@ -213,6 +215,7 @@ public boolean clearLine(ArrayList<Integer> rows) {
     grid.add(new int[10]);
     rowSum.remove(deleted);
     rowSum.add(0);
+    linesCleared++;
     n--;
   }
   for (int i = low; i < 20; i++) { 
