@@ -6,7 +6,13 @@ int linesCleared;
 Grid g;
   
 void setup() {
+  size(1500, 900);
   g = new Grid();
+  drawGrid();
+  drawSigns();
+}
+
+void drawGrid() {
   size(1500, 900);
   rectBorder(450, 880, 520, 10);
   stroke(255);
@@ -15,9 +21,10 @@ void setup() {
       rect(i, j, 43, 43);
     }
   }
-  // The code above created the grid drawing (+ border, vert & horiz lines)
-  
-  rectBorder(400, 150, 1000, 20); // top score sign
+}
+
+void drawSigns() {
+   rectBorder(400, 150, 1000, 20); // top score sign
   rectBorder(400, 150, 1000, 190); // current score sign
   rectBorder(400, 150, 1000, 360); // time sign
   rectBorder(400, 150, 1000, 530); // lines cleared sign
@@ -30,17 +37,8 @@ void setup() {
   rectBorder(300, 300, 30, 20); // up-next block displayer
   rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
   rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
-<<<<<<< HEAD
- 
+}
   
-}
-
-void draw() {
-   Grid g = new Grid();
-  g.run();
-=======
->>>>>>> a4b6d653d2029cf78de28fbc047cd8881265dc5d
-}
 
 // draws a white-bordered black rectangle (border width: 10 px)
 void rectBorder(int w, int h, int x, int y) {
