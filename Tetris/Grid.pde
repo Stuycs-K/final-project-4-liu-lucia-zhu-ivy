@@ -5,14 +5,13 @@ public class Grid {
   //int[][] grid;
   ArrayList<int[]> grid;
   ArrayList<String> toSpawn;
-  ArrayList<Integer> rowSum;
+  ArrayList<Integer> rowSum; // indicates whether a row is full or not and should be cleared
   public Blocks tetri;
-  public boolean stop;
+  public boolean stop; // indicates when block has reached bottom or another block
   int points;
 
   // creates an grid representing the playable grid
   public Grid() { 
-    //grid = new int[20][10];
     grid = new ArrayList<int[]>();
     rowSum = new ArrayList<Integer>();
     for (int i = 0; i < 20; i++) {
@@ -21,7 +20,7 @@ public class Grid {
     }
     toSpawn = new ArrayList<String>();
     points = 0;
-    tetri = new J();
+    tetri = new J(); // starting block
     refill();
   }
   
@@ -70,6 +69,9 @@ public void run(){
   }
 }
 
+// correlates tetri.c back to an actual color
+// I: turquoise; J: blue; L: orange; O: yellow; S: green; T: purple; Z: red
+// I chose colors according to Tetris Wiki
 public color findColor(int c) {
   if (c == 1) { return color(48, 213, 200); }
   if (c == 2) { return color(0, 0, 255); }
@@ -80,6 +82,9 @@ public color findColor(int c) {
   if (c == 7) { return color(255, 0, 0); }
   else { return color(0); }
 }
+
+// stops block from moving left if there's 
+// a block to the left of it
  public boolean canShiftLeft() {
    boolean ans = true;
     for (int i = 0; i < tetri.block.length; i++) {
@@ -95,6 +100,7 @@ public color findColor(int c) {
     return ans;
   }
   
+  // canShiftLeft() but it's right
   public boolean canShiftRight() {
     boolean ans = true;
     for (int i = 0; i < tetri.block.length; i++) {
@@ -110,6 +116,9 @@ public color findColor(int c) {
     return ans;
   }
 
+// if lowest_y reaches the bottom,
+// or the block is on top of another block,
+// this returns true
 public boolean shouldStop() {
   if (tetri.lowest_y >= 19) {
     return true;
@@ -149,6 +158,11 @@ public void drawBlock(color c) {
   }
 }
 
+// once the block has stopped, the block's color values
+// are inputted into the grid so the grid can 
+// remember the block's position
+// returns an ArrayList of rows that can be cleared after 
+// the block is inputted, if any
 public ArrayList<Integer> inputBlock() {
   ArrayList<Integer> ans = new ArrayList<Integer>();
   for (int i = 0; i < tetri.block.length; i++){
@@ -168,11 +182,17 @@ public ArrayList<Integer> inputBlock() {
   return ans;
 }
 
+// clears rows if there are rows to be cleared and then returns true
+// otherwise, returns false
+// I changed grid's indexing so that (0, 0) is at the 
+// bottom left corner instead of the top right corner.
+// This is so that when I delete a row, the rows on top of that row
+// fall downwards, instead of the rows below that row falling upwards
 public boolean clearLine(ArrayList<Integer> rows) {
   if (rows.size() > 0) {
   int n = rows.size();
   int low = rows.get(n - 1);
-  // implements clearing the line(s)
+  // point system
     if (n == 1) {
       points += 100;
     }

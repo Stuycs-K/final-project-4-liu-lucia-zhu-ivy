@@ -3,11 +3,11 @@ class Blocks{
   private String type;
   private double speed;
   public int x,y;
-  public int lowest_y;
-  public int c;
+  public int lowest_y; // indicates the lowest y-cor the block takes up
+  public int c; // colors indicated by int instead so it can be stored in grid
   public int[][] block;
   public final int pixSize = 43;
-  public int b_time;
+  public int b_time; // used to time fall()
   
   public Blocks(String name){
     type = name;
