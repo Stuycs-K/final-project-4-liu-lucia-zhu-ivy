@@ -65,18 +65,24 @@ public boolean shouldStop() {
     return true;
   }
   boolean ans = false;
-  for (int i = 0; i < tetri.block.length; i++){
-  int iy = tetri.y+i;
+  //for (int i = 0; i < tetri.block.length; i++){
+  //int iy = tetri.y+i + 1;
   // - tetri.block[0].length/2 - 1;
       for (int j = 0; j < tetri.block[0].length; j++){
+      int iy = tetri.block.length - 1;
       int ix = tetri.x+j;
+      while (tetri.block[iy][j] == 0) {
+        iy--;
+      }
+      iy++;
+      iy += tetri.y;
         if(grid[iy][ix] == 1){
           ans = true;
         }
       }
+      return ans;
   }
-  return ans;
-}
+ 
   
 
 public void display(int x, int y){

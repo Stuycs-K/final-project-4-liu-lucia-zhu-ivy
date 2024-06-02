@@ -36,7 +36,7 @@ class Blocks{
   }
   
   public void left(){
-    if (x - block[0].length/2 > 0){
+    if (x > 0){
       x--;
     }
   }
@@ -61,10 +61,6 @@ class Blocks{
   
   public void space(){
     // block down immediately
-  }
-  
-  public String getType(){
-    return type;
   }
   
   public double getSpeed(){
