@@ -20,7 +20,7 @@ void draw(){
 }
 
 public void keyPressed(){
-  //g.drawBlock(g.tetri, 0, 255);
+  g.drawBlock(0);
     if(key == CODED){
       if(keyCode == UP){
         g.tetri.up();
@@ -38,7 +38,7 @@ public void keyPressed(){
         g.tetri.space();
       }
     }
-   // g.drawBlock(g.tetri, g.tetri.c, 0);
+   g.drawBlock(g.tetri.c);
   }
   
   

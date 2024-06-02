@@ -6,18 +6,22 @@ class Blocks{
   public color c;
   public int[][] block;
   public final int pixSize = 43;
+  public int b_time;
   
   public Blocks(String name){
     type = name;
     speed = 1;
     x = 5;
     y = 0;
+    b_time = millis() + 1000;
     c = color(random(255), random(255), random(255));
   }
   
-  void draw() {
-    delay(1000);
-    y++;
+  void fall() {
+    if (millis() > b_time) {
+      y++;
+      b_time = millis() + 1000;
+    }
   }
   
   public void up(){
@@ -56,11 +60,5 @@ class Blocks{
   
   public double getSpeed(){
     return speed;
-  }
-  
-  public void fall(){
-    // change speed and y-cor
-    y++;
-    delay(1000);
   }
 }

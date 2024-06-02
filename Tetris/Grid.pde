@@ -50,8 +50,8 @@ public class Grid {
   // Ivy's code
 
 public void run(){
-    //tetri.draw();
-    drawBlock();
+   tetri.y++;
+   drawBlock(tetri.c);
 }
 
 public void display(int x, int y){
@@ -79,8 +79,8 @@ public void display(int x, int y){
 //  }
 //}
 
-public void drawBlock() {
-  fill(tetri.c);
+public void drawBlock(color c) {
+  fill(c);
   stroke(255);
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){
