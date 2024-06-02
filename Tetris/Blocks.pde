@@ -6,34 +6,15 @@ class Blocks{
   public color c;
   public int[][] block;
   public final int pixSize = 43;
+  public boolean active;
   
-  public Blocks(String name, int row, int col){
+  public Blocks(String name){
     type = name;
     speed = 1;
     x = 5;
     y = 0;
+    active = true;
     c = color(random(255), random(255), random(255));
-    block = new int[row][col];
-  }
-  
-  public void keyPressed(){
-    if(key == CODED){
-      if(keyCode == UP){
-        up();
-      }
-      if(keyCode == DOWN){
-        down();
-      }
-      if(keyCode == LEFT){
-        left();
-      }
-      if(keyCode == RIGHT){
-        right();
-      }
-      if(keyCode == 32){
-        space();
-      }
-    }
   }
   
   public void up(){
@@ -46,11 +27,20 @@ class Blocks{
   }
   
   public void left(){
-    x--;
+    if (x - block[0].length/2 > 0){
+      x--;
+    }
   }
   
   public void right(){
-    x++;
+    if (block[0].length == 3){
+      if (x < 8){
+        x++;
+      }
+    }
+    else if (x + (block[0].length+1)/2 < 10){
+      x++;
+    }
   }
   
   public void space(){
@@ -67,7 +57,7 @@ class Blocks{
   
   public void fall(){
     // change speed and y-cor
+    y++;
     delay(1000);
-    y--;
   }
 }
