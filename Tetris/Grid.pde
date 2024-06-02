@@ -125,12 +125,11 @@ public ArrayList<Integer> inputBlock() {
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
           int y = tetri.y+i;
-          grid.get(y)[x] = 1;
+          grid.get(y)[x] = tetri.c;
           rowSum[y]++;
           if (rowSum[y] == 10) {
             ans.add(y);
           }
-          System.out.println("Inputted 1 in " + y + " " + x);
         }
       }
   }
@@ -138,21 +137,24 @@ public ArrayList<Integer> inputBlock() {
 }
 
 public void clearLine(ArrayList<Integer> rows) {
+  int n = rows.size();
   // implements clearing the line(s)
-  if (rows.size() > 0) {
-    if (rows.size() == 1) {
+  if (n > 0) {
+    if (n == 1) {
       points += 100;
     }
-    if (rows.size() == 2) {
+    if (n == 2) {
       points += 300;
     }
-    if (rows.size() == 3) {
+    if (n == 3) {
       points += 500;
     }
-    if (rows.size() == 4) {
+    if (n == 4) {
       points += 1200;
     }
   }
+  while (n > 0) {
+    
 }
 
 }
