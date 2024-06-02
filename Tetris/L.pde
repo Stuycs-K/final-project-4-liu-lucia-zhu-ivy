@@ -10,11 +10,13 @@ class L extends Blocks{
     // grid changes based on parity
     if (flip % 2 == 0){
        block = new int[2][3];
+       lowest_y = y + 1;
        if(x == 9){
         x--;
        }
     }else{
       block = new int[3][2];
+      lowest_y = y + 2;
     }
     // fill in block
     if (flip == 0){

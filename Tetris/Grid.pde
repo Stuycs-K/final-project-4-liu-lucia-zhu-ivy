@@ -50,8 +50,20 @@ public class Grid {
   // Ivy's code
 
 public void run(){
-   tetri.y++;
-   drawBlock(tetri.c);
+  System.out.println(tetri.y);
+  System.out.println(tetri.lowest_y);
+  if (tetri.lowest_y == 19) {
+    delay(700);
+    inputBlock();
+    tetri = new J();
+  }
+  else {
+    if (tetri.b_time < millis() + 10) {
+      drawBlock(0);
+    }
+     tetri.fall();
+     drawBlock(tetri.c);
+  }
 }
 
 public void display(int x, int y){
@@ -87,20 +99,20 @@ public void drawBlock(color c) {
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j - tetri.block[0].length/2;
           int y = tetri.y+i + 1;
-          display(x, y);
+          display(x - 1, y - 1);
         }
       }
   }
 }
 
-
-public void inputBlock(Blocks t) {
-  for (int i = 0; i < t.block.length; i++){
-      for (int j = 0; j < t.block[0].length; j++){
-        if(t.block[i][j] == 1){
-          int x = tetri.x+j - t.block[0].length/2;
+public void inputBlock() {
+  for (int i = 0; i < tetri.block.length; i++){
+      for (int j = 0; j < tetri.block[0].length; j++){
+        if(tetri.block[i][j] == 1){
+          int x = tetri.x+j - tetri.block[0].length/2;
           int y = tetri.y+i + 1;
           grid[y][x] = 1; // if-statements depending on color?
+          System.out.println("(" + y + ", " + x + ")");
         }
       }
   }

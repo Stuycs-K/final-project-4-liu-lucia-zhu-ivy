@@ -3,6 +3,7 @@ class Blocks{
   private String type;
   private double speed;
   public int x,y;
+  public int lowest_y;
   public color c;
   public int[][] block;
   public final int pixSize = 43;
@@ -20,6 +21,7 @@ class Blocks{
   void fall() {
     if (millis() > b_time) {
       y++;
+      lowest_y++;
       b_time = millis() + 1000;
     }
   }
@@ -31,6 +33,7 @@ class Blocks{
   public void down(){
     // moves block down one unit
     y++;
+    lowest_y++;
   }
   
   public void left(){
@@ -61,4 +64,6 @@ class Blocks{
   public double getSpeed(){
     return speed;
   }
+  
+
 }
