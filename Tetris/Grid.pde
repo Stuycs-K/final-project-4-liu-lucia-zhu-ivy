@@ -5,12 +5,13 @@ public class Grid {
   int[][] grid;
   ArrayList<String> toSpawn;
   public Blocks tetri;
+  public boolean stop;
 
   // creates an grid representing the playable grid
   public Grid() { 
     grid = new int[22][12];
     for (int i = 0; i < grid.length; i++){
-      grid[i][0] = 2;
+      grid[i][0] = 0; // this will count how many filled blocks in each row
       grid[i][11] = 2;
     }
     for (int i = 0; i < grid[0].length; i++){
@@ -50,9 +51,9 @@ public class Grid {
   // Ivy's code
 
 public void run(){
-  System.out.println(tetri.y);
-  System.out.println(tetri.lowest_y);
-  if (tetri.lowest_y == 19) {
+  //System.out.println(tetri.y);
+  //System.out.println(tetri.lowest_y);
+  if (shouldStop()) {
     delay(700);
     inputBlock();
     tetri = new J();
@@ -65,6 +66,31 @@ public void run(){
      drawBlock(tetri.c);
   }
 }
+
+public boolean shouldStop() {
+  if (tetri.lowest_y == 19) {
+    return true;
+  }
+  boolean ans = false;
+  //for (int i = 0; i < tetri.block[0].length; i++) {
+  //  int ix = tetri.x+i - tetri.block[0].length/2 - 1;
+  //  int iy = tetri.lowest_y + 2;
+  //  if (grid[iy][ix] == 1) {
+  //    ans = true;
+  //  }
+  //}
+  for (int i = 0; i < tetri.block.length; i++){
+  int ix = tetri.x+i - tetri.block[0].length/2 - 1;
+      for (int j = 0; j < tetri.block[0].length; j++){
+      int iy = tetri.y+i + 1;
+        if(grid[iy][ix] == 1){
+          ans = true;
+        }
+      }
+  }
+  return ans;
+}
+  
 
 public void display(int x, int y){
   square(x*43 + 530, y*43 + 20, 43);
@@ -111,16 +137,17 @@ public void inputBlock() {
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j - tetri.block[0].length/2;
           int y = tetri.y+i + 1;
-          grid[y][x] = 1; // if-statements depending on color?
-          System.out.println("(" + y + ", " + x + ")");
+          grid[y][x] = 1; 
+          grid[y][0]++;
         }
       }
   }
 }
 
-public color find_color(int x, int y) {
-  return color(100);
+public void clearLine() {
+  // implements clearing the line(s)
 }
+
 }
 
 //for (int i = 530; i <= 917; i = i + 43) {
