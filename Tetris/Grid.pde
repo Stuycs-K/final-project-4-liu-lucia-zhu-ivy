@@ -69,12 +69,12 @@ public void run(){
 }
 
 public color findColor(int c) {
-  if (c == 0) { return color(48, 213, 200); }
-  if (c == 1) { return color(0, 0, 255); }
-  if (c == 2) { return color(255, 165, 0); }
-  if (c == 3) { return color(255, 255, 0); }
-  if (c == 4) { return color(170, 255, 0); }
-  if (c == 5) { return color(191, 64, 191); }
+  if (c == 1) { return color(48, 213, 200); }
+  if (c == 2) { return color(0, 0, 255); }
+  if (c == 3) { return color(255, 165, 0); }
+  if (c == 4) { return color(255, 255, 0); }
+  if (c == 5) { return color(170, 255, 0); }
+  if (c == 6) { return color(191, 64, 191); }
   return color(255, 0, 0); 
 }
 
@@ -91,7 +91,7 @@ public boolean shouldStop() {
       }
       iy++;
       iy += tetri.y;
-        if(grid.get(19 - iy)[ix] == 1){
+        if(grid.get(19 - iy)[ix] != 0){
           ans = true;
         }
       }
@@ -125,6 +125,7 @@ public ArrayList<Integer> inputBlock() {
           int x = tetri.x+j;
           int y = tetri.y+i;
           grid.get(19 - y)[x] = tetri.c;
+          System.out.println("Inputted: " + (19 - y) + " " + x);
           rowSum.set(19 - y, rowSum.get(19 - y) + 1);
           if (rowSum.get(19 - y) == 10) {
             ans.add(19 - y);
