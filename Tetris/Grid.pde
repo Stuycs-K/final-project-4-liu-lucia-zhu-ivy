@@ -127,32 +127,36 @@ public color findColor(int c) {
 // or the block is on top of another block,
 // this returns true
 public boolean shouldStop() {
+  // Ivy's
   //System.out.println(tetri.lowest_y);
   //for (int i = 0; i < lowest.length; i++){
   //  System.out.print(lowest[i] + " ");
   //}
   //System.out.println();
-  if(19 - tetri.lowest_y <= lowest[tetri.x]){
-    lowest[tetri.x] += tetri.block.length;
-  }
-  return 19 - tetri.lowest_y <= lowest[tetri.x];
-  //if (tetri.lowest_y >= 19) {
-  //  return true;
+  //if(19 - tetri.lowest_y <= lowest[tetri.x]){
+  //  lowest[tetri.x] += tetri.block.length;
   //}
-  //boolean ans = false;
-  //    for (int j = 0; j < tetri.block[0].length; j++){
-  //    int iy = tetri.block.length - 1;
-  //    int ix = tetri.x+j;
-  //    while (tetri.block[iy][j] == 0) {
-  //      iy--;
-  //    }
-  //    iy++;
-  //    iy += tetri.y;
-  //      if(grid.get(19 - iy)[ix] != 0){
-  //        ans = true;
-  //      }
-  //    }
-  //    return ans;
+  //return 19 - tetri.lowest_y <= lowest[tetri.x];
+  
+  // Lucia's
+  
+  if (tetri.lowest_y >= 19) {
+    return true;
+  }
+  boolean ans = false;
+      for (int j = 0; j < tetri.block[0].length; j++){
+      int iy = tetri.block.length - 1;
+      int ix = tetri.x+j;
+      while (tetri.block[iy][j] == 0) {
+        iy--;
+      }
+      iy++;
+      iy += tetri.y;
+        if(grid.get(19 - iy)[ix] != 0){
+          ans = true;
+        }
+      }
+      return ans;
       
   }
 
