@@ -20,7 +20,7 @@ class Blocks{
     if (millis() > b_time) {
       y++;
       lowest_y++;
-      b_time = millis() + 1000;
+      b_time = millis() + (int) (1000 * speed);
     }
   }
   
@@ -53,6 +53,11 @@ class Blocks{
           x++;
         }
       }
+      else if (block[0].length == 4){
+        if (x < 6){
+          x++;
+        }
+      }
       else {
         if (x < 8) {
           x++;
@@ -63,7 +68,6 @@ class Blocks{
   
   public void space(){
     // block down immediately
-    y = lowest_y;
   }
   
   public double getSpeed(){
