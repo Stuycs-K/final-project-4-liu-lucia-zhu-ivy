@@ -69,4 +69,6 @@ Worked on displaying blocks, got a display working!
 
 ### date 6/02/24
 
-Implemented space bar. When the down key is held continuously, there are issues with spawning.
+Implemented space bar. When the down key is held continuously, there are issues with spawning. 
+Game usually starts with a J tetromino
+Tried out new way to map completed rows
