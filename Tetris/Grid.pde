@@ -10,6 +10,7 @@ public class Grid {
   public boolean stop; // indicates when block has reached bottom or another block
   int points;
   int linesCleared;
+  public int[] lowest = new int[10];
 
   // creates an grid representing the playable grid
   public Grid() { 
@@ -126,23 +127,33 @@ public color findColor(int c) {
 // or the block is on top of another block,
 // this returns true
 public boolean shouldStop() {
-  if (tetri.lowest_y >= 19) {
-    return true;
+  //System.out.println(tetri.lowest_y);
+  //for (int i = 0; i < lowest.length; i++){
+  //  System.out.print(lowest[i] + " ");
+  //}
+  //System.out.println();
+  if(19 - tetri.lowest_y <= lowest[tetri.x]){
+    lowest[tetri.x] += tetri.block.length;
   }
-  boolean ans = false;
-      for (int j = 0; j < tetri.block[0].length; j++){
-      int iy = tetri.block.length - 1;
-      int ix = tetri.x+j;
-      while (tetri.block[iy][j] == 0) {
-        iy--;
-      }
-      iy++;
-      iy += tetri.y;
-        if(grid.get(19 - iy)[ix] != 0){
-          ans = true;
-        }
-      }
-      return ans;
+  return 19 - tetri.lowest_y <= lowest[tetri.x];
+  //if (tetri.lowest_y >= 19) {
+  //  return true;
+  //}
+  //boolean ans = false;
+  //    for (int j = 0; j < tetri.block[0].length; j++){
+  //    int iy = tetri.block.length - 1;
+  //    int ix = tetri.x+j;
+  //    while (tetri.block[iy][j] == 0) {
+  //      iy--;
+  //    }
+  //    iy++;
+  //    iy += tetri.y;
+  //      if(grid.get(19 - iy)[ix] != 0){
+  //        ans = true;
+  //      }
+  //    }
+  //    return ans;
+      
   }
 
 public void display(int x, int y, color c){
@@ -229,5 +240,7 @@ public boolean clearLine(ArrayList<Integer> rows) {
 }
 return false;
 }
+
+
 
 }

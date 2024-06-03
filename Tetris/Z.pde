@@ -23,7 +23,7 @@ class Z extends Blocks{
       block[0][1] = 1;
       block[1][1] = 1;
       block[1][2] = 1;
-      if(x == 9){
+      if (x == 8){
         x--;
       }
     }

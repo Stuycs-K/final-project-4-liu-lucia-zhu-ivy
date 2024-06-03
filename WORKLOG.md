@@ -55,14 +55,18 @@ Created all 7 tetrominoes and constructors
 
 Tried writing up and down for I, J, L
 
-### date 5/25/23
+### date 5/25/24
 
 Tried working on displaying tetromino, need to figure out
 
-### date 5/28/23
+### date 5/28/24
 
 Decided on how to display the grid, finished writing rotations for tetrominoes
 
-### date 5/29/23
+### date 5/29/24
 
 Worked on displaying blocks, got a display working!
+
+### date 6/02/24
+
+Implemented space bar. When the down key is held continuously, there are issues with spawning.

@@ -13,7 +13,8 @@ class J extends Blocks{
     if (flip % 2 == 0){
        block = new int[2][3];
        lowest_y = y + 1;
-       if(x == 9){
+       System.out.println(x);
+       if(x == 8){
         x--;
        }
     }else{

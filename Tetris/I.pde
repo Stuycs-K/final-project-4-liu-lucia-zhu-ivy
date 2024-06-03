@@ -19,6 +19,9 @@ class I extends Blocks{
     else {
       block = new int[1][4];
       lowest_y = y;
+      if (x + 4 >= 9){
+        x -= 3;
+      }
       for (int i = 0; i < 4; i++){
         block[0][i] = 1;
       }

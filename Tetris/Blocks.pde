@@ -63,6 +63,7 @@ class Blocks{
   
   public void space(){
     // block down immediately
+    y = lowest_y;
   }
   
   public double getSpeed(){

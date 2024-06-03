@@ -13,7 +13,7 @@ class L extends Blocks{
     if (flip % 2 == 0){
        block = new int[2][3];
        lowest_y = y + 1;
-       if(x == 9){
+       if(x == 8){
         x--;
        }
     }else{

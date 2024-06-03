@@ -54,10 +54,14 @@ public void keyPressed(){
       if(keyCode == RIGHT && g.canShiftRight()){
         g.tetri.right();
       }
-      if(keyCode == 32){
-        g.tetri.space();
-      }
       g.drawBlock(g.findColor(g.tetri.c));
+    }
+    else{
+      if(key == ' '){
+          System.out.println("space");
+          g.tetri.space();
+          g.drawBlock(g.findColor(g.tetri.c));
+        }
     }
   }
   

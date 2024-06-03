@@ -23,7 +23,7 @@ class S extends Blocks{
       block[0][2] = 1;
       block[1][0] = 1;
       block[1][1] = 1;
-      if(x == 9){
+      if (x == 8){
         x--;
       }
     }
