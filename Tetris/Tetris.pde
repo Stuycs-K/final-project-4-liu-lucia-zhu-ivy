@@ -69,8 +69,7 @@ public void keyPressed(){
 //=====HELPER FUNCTIONS=====//
 
 void quit() {
-  g.points = 0;
-  g.linesCleared = 0;
+  setup();
   rectBorder(400, 150, 1000, 20);
   rectBorder(400, 150, 1000, 190);
   fill(0);

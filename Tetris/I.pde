@@ -20,7 +20,9 @@ class I extends Blocks{
     else {
       block = new int[1][4];
       lowest_y = y;
-      x--;
+      if (x > 0){
+        x--;
+      }
       if (x >= 6){
         x = 6;
       }

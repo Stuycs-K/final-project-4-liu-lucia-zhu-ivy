@@ -23,7 +23,7 @@ public class Grid {
     toSpawn = new ArrayList<String>();
     points = 0;
     linesCleared = 0;
-    tetri = new J(); // starting block
+    tetri = new I(); // starting block
     refill();
   }
   
@@ -192,7 +192,8 @@ public ArrayList<Integer> inputBlock() {
           int x = tetri.x+j;
           int y = tetri.y+i;
           grid.get(19 - y)[x] = tetri.c;
-          System.out.println("Inputted: " + (19 - y) + " " + x);
+          lowest[x] += 1;
+          //System.out.println("Inputted: " + (19 - y) + " " + x);
           rowSum.set(19 - y, rowSum.get(19 - y) + 1);
           if (rowSum.get(19 - y) == 10) {
             ans.add(19 - y);
@@ -200,6 +201,7 @@ public ArrayList<Integer> inputBlock() {
         }
       }
   }
+  System.out.println(Arrays.toString(lowest));
   return ans;
 }
 
