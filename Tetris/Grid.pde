@@ -186,13 +186,16 @@ public void drawBlock(color c) {
 // the block is inputted, if any
 public ArrayList<Integer> inputBlock() {
   ArrayList<Integer> ans = new ArrayList<Integer>();
+  int max = 0;
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
           int y = tetri.y+i;
           grid.get(19 - y)[x] = tetri.c;
-          lowest[x] += 1;
+          if (20 - y > lowest[x]){
+            lowest[x] = 20 - y;
+          }
           //System.out.println("Inputted: " + (19 - y) + " " + x);
           rowSum.set(19 - y, rowSum.get(19 - y) + 1);
           if (rowSum.get(19 - y) == 10) {
@@ -215,6 +218,9 @@ public boolean clearLine(ArrayList<Integer> rows) {
   if (rows.size() > 0) {
   int n = rows.size();
   int low = rows.get(n - 1);
+  for (int i = 0; i < 10 ; i++){
+    lowest[i] -= n;
+  }
   // point system
     if (n == 1) {
       points += 100;
