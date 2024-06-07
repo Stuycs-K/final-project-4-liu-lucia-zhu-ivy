@@ -8,6 +8,7 @@ class Blocks{
   public int[][] block;
   public final int pixSize = 43;
   public int b_time; // used to time fall()
+  public int[] blockSum;
   
   public Blocks(String name){
     type = name;
@@ -63,11 +64,6 @@ class Blocks{
           x++;
         }
       }
-  }
-  
-  
-  public void space(){
-    // block down immediately
   }
   
   public double getSpeed(){

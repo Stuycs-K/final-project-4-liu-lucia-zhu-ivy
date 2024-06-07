@@ -40,28 +40,8 @@ public void keyPressed(){
       playing = false;
       quit();
     }
-    if(key == CODED){
-      g.drawBlock(0);
-      if(keyCode == UP){
-        g.tetri.up();
-      }
-      if(keyCode == DOWN){
-        g.tetri.down();
-      }
-      if(keyCode == LEFT && g.canShiftLeft()){
-        g.tetri.left();
-      }
-      if(keyCode == RIGHT && g.canShiftRight()){
-        g.tetri.right();
-      }
-      g.drawBlock(g.findColor(g.tetri.c));
-    }
-    else{
-      if(key == ' '){
-          System.out.println("space");
-          g.tetri.space();
-          g.drawBlock(g.findColor(g.tetri.c));
-        }
+    if (key == CODED || key == ' '){
+      g.keyPressed();
     }
   }
   
@@ -82,7 +62,9 @@ void quit() {
 }
 
 void lose() {
-  // will be implemented
+  if (g.lose){
+    quit();
+  }
 }
 
 void drawSigns() {

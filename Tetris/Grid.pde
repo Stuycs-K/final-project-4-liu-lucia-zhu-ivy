@@ -10,7 +10,8 @@ public class Grid {
   public boolean stop; // indicates when block has reached bottom or another block
   int points;
   int linesCleared;
-  public int[] lowest = new int[10];
+  int[] lowest = new int[10];
+  public boolean lose = false;
 
   // creates an grid representing the playable grid
   public Grid() { 
@@ -56,7 +57,10 @@ public class Grid {
   // Ivy's code
 
 public void run(){
-  if (shouldStop()) {
+  if (lose){
+    exit();
+  }
+  else if (shouldStop()) {
     delay(700);
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
@@ -140,6 +144,11 @@ public boolean shouldStop() {
   
   // Lucia's
   
+  if (stop){
+    stop = false;
+    return true;
+  }
+  
   if (tetri.lowest_y >= 19) {
     return true;
   }
@@ -195,6 +204,9 @@ public ArrayList<Integer> inputBlock() {
           grid.get(19 - y)[x] = tetri.c;
           if (20 - y > lowest[x]){
             lowest[x] = 20 - y;
+            if (lowest[x] == 20){
+              lose = true;
+            }
           }
           //System.out.println("Inputted: " + (19 - y) + " " + x);
           rowSum.set(19 - y, rowSum.get(19 - y) + 1);
@@ -253,6 +265,41 @@ public boolean clearLine(ArrayList<Integer> rows) {
 return false;
 }
 
-
+public void keyPressed(){
+  drawBlock(0);
+  if(key == CODED){
+      if(keyCode == UP){
+        tetri.up();
+      }
+      if(keyCode == DOWN){
+        tetri.down();
+      }
+      if(keyCode == LEFT && canShiftLeft()){
+        tetri.left();
+      }
+      if(keyCode == RIGHT && canShiftRight()){
+        tetri.right();
+      }
+    }
+    else{
+      if(key == ' '){
+        // spacebar - block down immediately
+        int max = 0;
+        for (int i = 0; i < tetri.block[0].length; i++){
+          for (int j = 0; j < tetri.block.length; j++){
+            if (tetri.block[j][i] == 1){
+              if (lowest[i] + j > max){
+                max = lowest[i] + j;
+                println(max);
+              }
+            }
+          }
+        }
+        //tetri.y = 18 - max + tetri.block.length;
+        //stop = true;
+      }
+    }
+    drawBlock(findColor(tetri.c));
+}
 
 }

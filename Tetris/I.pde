@@ -16,6 +16,7 @@ class I extends Blocks{
       for (int i = 0; i < 4; i++){
         block[i][0] = 1;
       }
+      blockSum = new int[]{4};
     }
     else {
       block = new int[1][4];
@@ -29,6 +30,7 @@ class I extends Blocks{
       for (int i = 0; i < 4; i++){
         block[0][i] = 1;
       }
+      blockSum = new int[]{1, 1, 1, 1};
     }
     flip = !flip;
   }
