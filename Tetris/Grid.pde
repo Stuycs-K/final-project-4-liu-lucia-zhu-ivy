@@ -65,11 +65,15 @@ public class Grid {
   
 
 public void run(){
+<<<<<<< HEAD
+  if (shouldStop()) {
+=======
   if (lose){
     exit();
   }
   else if (shouldStop()) {
     delay(700);
+>>>>>>> b4e76d28db018eb71275232ef339f3c43ed52037
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
       rectBorder(400, 150, 1000, 190);
@@ -170,6 +174,7 @@ public boolean shouldStop() {
 // returns an ArrayList of rows that can be cleared after 
 // the block is inputted, if any
 public ArrayList<Integer> inputBlock() {
+  //delay(3000);
   ArrayList<Integer> ans = new ArrayList<Integer>();
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){
