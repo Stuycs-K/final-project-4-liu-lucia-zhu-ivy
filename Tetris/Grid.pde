@@ -39,7 +39,7 @@ public class Grid {
   void refill() {
     String[] types = new String[] {"I", "J", "L", "O", "S", "T", "Z"};
     for (int i = 0; i < 7; i++) { 
-      for (int j = 0; j < 4; j++) {
+      for (int j = 0; j < 2; j++) {
         toSpawn.add(types[i]);
       }
     }
@@ -230,7 +230,7 @@ public boolean clearLine(ArrayList<Integer> rows) {
     linesCleared++;
     n--;
   }
-  tetri.speedUp(linesCleared/10 + 1);
+  tetri.speedUp(linesCleared/5 + 1);
   for (int i = low; i < 20; i++) { 
     for (int j = 0; j < 10; j++) { 
       tetri.display(j, 19 - i, findColor(grid.get(i)[j]));

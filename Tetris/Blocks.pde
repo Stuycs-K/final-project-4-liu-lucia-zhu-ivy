@@ -66,7 +66,7 @@ class Blocks{
   }
   
   void speedUp(int n){
-    speed = n / 10;
+    speed = n;
   }
   
   // display blocks
