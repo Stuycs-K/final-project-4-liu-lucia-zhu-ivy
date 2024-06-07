@@ -7,7 +7,7 @@ public class Grid {
   ArrayList<String> toSpawn;
   ArrayList<Integer> rowSum; // indicates whether a row is full or not and should be cleared
   public Blocks tetri;
-  public boolean stop; // indicates when block has reached bottom or another block
+  //public boolean stop; // indicates when block has reached bottom or another block
   int points;
   int linesCleared;
   int[] lowest = new int[10];
@@ -53,8 +53,6 @@ public class Grid {
    if (type.equals("Z")) { tetri = new Z(); }
   }
   
-  
-  // Ivy's code
 
 public void run(){
   if (lose){
@@ -130,25 +128,7 @@ public color findColor(int c) {
 // if lowest_y reaches the bottom,
 // or the block is on top of another block,
 // this returns true
-public boolean shouldStop() {
-  // Ivy's
-  //System.out.println(tetri.lowest_y);
-  //for (int i = 0; i < lowest.length; i++){
-  //  System.out.print(lowest[i] + " ");
-  //}
-  //System.out.println();
-  //if(19 - tetri.lowest_y <= lowest[tetri.x]){
-  //  lowest[tetri.x] += tetri.block.length;
-  //}
-  //return 19 - tetri.lowest_y <= lowest[tetri.x];
-  
-  // Lucia's
-  
-  if (stop){
-    stop = false;
-    return true;
-  }
-  
+public boolean shouldStop() {  
   if (tetri.lowest_y >= 19) {
     return true;
   }
@@ -195,7 +175,6 @@ public void drawBlock(color c) {
 // the block is inputted, if any
 public ArrayList<Integer> inputBlock() {
   ArrayList<Integer> ans = new ArrayList<Integer>();
-  int max = 0;
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){
         if(tetri.block[i][j] == 1){
