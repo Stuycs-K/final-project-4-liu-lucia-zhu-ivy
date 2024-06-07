@@ -62,13 +62,9 @@ void quit() {
 }
 
 void lose() {
-<<<<<<< HEAD
-  
-=======
   if (g.lose){
     quit();
   }
->>>>>>> b4e76d28db018eb71275232ef339f3c43ed52037
 }
 
 void drawSigns() {
