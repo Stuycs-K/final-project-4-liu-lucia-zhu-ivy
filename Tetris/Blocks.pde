@@ -20,7 +20,7 @@ class Blocks{
     if (millis() > b_time) {
       y++;
       lowest_y++;
-      b_time = millis() + (int) (1000 * speed);
+      b_time = millis() + (int) (1000 * speed) + millis()/10000;
     }
   }
   
@@ -65,9 +65,11 @@ class Blocks{
       }
   }
   
-  public double getSpeed(){
-    return speed;
+  void speedUp(int n){
+    speed = n / 10;
   }
+  
+  // display blocks
   
   public void display(int x, int y, color c){
   fill(c);

@@ -230,6 +230,7 @@ public boolean clearLine(ArrayList<Integer> rows) {
     linesCleared++;
     n--;
   }
+  tetri.speedUp(linesCleared/10 + 1);
   for (int i = low; i < 20; i++) { 
     for (int j = 0; j < 10; j++) { 
       tetri.display(j, 19 - i, findColor(grid.get(i)[j]));
