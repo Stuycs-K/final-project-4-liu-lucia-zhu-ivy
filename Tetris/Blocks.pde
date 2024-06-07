@@ -69,5 +69,27 @@ class Blocks{
     return speed;
   }
   
+  public void display(int x, int y, color c){
+  fill(c);
+  if (x < 0){
+    stroke(0);
+  }
+  else{
+    stroke(255);
+  }
+  square(x*43 + 530, y*43 + 20, 43);
+}
 
+
+public void drawBlock(color c) {
+  for (int i = 0; i < block.length; i++){ // y
+      for (int j = 0; j < block[0].length; j++){ // x
+        if(block[i][j] == 1){
+          int x = this.x+j;
+          int y = this.y+i;
+          display(x, y, c);
+        }
+      }
+  }
+}
 }

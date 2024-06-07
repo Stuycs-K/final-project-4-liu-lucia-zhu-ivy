@@ -10,8 +10,8 @@ Grid g;
   
 void setup() {
   size(1500, 900);
-  g = new Grid();
   drawSigns();
+  g = new Grid();
   playing = false;
 }
 
