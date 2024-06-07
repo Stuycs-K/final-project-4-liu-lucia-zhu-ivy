@@ -30,7 +30,8 @@ public class Grid {
     for (String s : types){
       toSpawn.add(s);
     }
-    tetri = spawnNew();
+    tetri = new I();
+    //tetri = spawnNew();
     next = spawnNew();
     displayNext();
   }
@@ -65,15 +66,11 @@ public class Grid {
   
 
 public void run(){
-<<<<<<< HEAD
-  if (shouldStop()) {
-=======
   if (lose){
     exit();
   }
   else if (shouldStop()) {
     delay(700);
->>>>>>> b4e76d28db018eb71275232ef339f3c43ed52037
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
       rectBorder(400, 150, 1000, 190);
@@ -148,7 +145,7 @@ public color findColor(int c) {
 // or the block is on top of another block,
 // this returns true
 public boolean shouldStop() {  
-  if (tetri.lowest_y >= 19) {
+  if (tetri.lowest_y >= 20) {
     return true;
   }
   boolean ans = false;
@@ -160,12 +157,11 @@ public boolean shouldStop() {
       }
       iy++;
       iy += tetri.y;
-        if(grid.get(19 - iy)[ix] != 0){
+        if(19 - iy >= 0 && grid.get(19 - iy)[ix] != 0){
           ans = true;
         }
       }
-      return ans;
-      
+      return ans;     
   }
 
 // once the block has stopped, the block's color values
