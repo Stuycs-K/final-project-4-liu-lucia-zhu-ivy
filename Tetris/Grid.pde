@@ -57,7 +57,6 @@ public class Grid {
 
 public void run(){
   if (shouldStop()) {
-    delay(700);
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
       rectBorder(400, 150, 1000, 190);
@@ -185,6 +184,7 @@ public void drawBlock(color c) {
 // returns an ArrayList of rows that can be cleared after 
 // the block is inputted, if any
 public ArrayList<Integer> inputBlock() {
+  //delay(3000);
   ArrayList<Integer> ans = new ArrayList<Integer>();
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){

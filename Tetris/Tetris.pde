@@ -83,7 +83,7 @@ void quit() {
 }
 
 void lose() {
-  // will be implemented
+  
 }
 
 void drawSigns() {
