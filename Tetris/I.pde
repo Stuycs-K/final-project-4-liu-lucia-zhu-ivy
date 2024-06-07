@@ -16,11 +16,7 @@ class I extends Blocks{
       for (int i = 0; i < 4; i++){
         block[i][0] = 1;
       }
-      if (lowest_y >= 20) {
-        int diff = lowest_y - 19;
-        lowest_y = 19;
-        y -= diff;
-      }
+      fixFloorRotation();
     }
     else {
       block = new int[1][4];

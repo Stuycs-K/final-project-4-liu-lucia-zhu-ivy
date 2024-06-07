@@ -30,8 +30,7 @@ public class Grid {
     for (String s : types){
       toSpawn.add(s);
     }
-    tetri = new I();
-    //tetri = spawnNew();
+    tetri = spawnNew();
     next = spawnNew();
     displayNext();
   }
@@ -66,11 +65,15 @@ public class Grid {
   
 
 public void run(){
+  System.out.println(tetri.lowest_y);
   if (lose){
     exit();
   }
   else if (shouldStop()) {
-    delay(700);
+    int diff = tetri.lowest_y - 19;
+    tetri.lowest_y = 19;
+    tetri.y -= diff;
+    tetri.drawBlock(findColor(tetri.c));
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
       rectBorder(400, 150, 1000, 190);
@@ -84,11 +87,13 @@ public void run(){
     displayNext();
   }
   else {
-    if (tetri.b_time < millis() + 10) {
+    if (tetri.b_time < millis() + 10 && tetri.lowest_y < 19) {
       tetri.drawBlock(0);
     }
     tetri.fall();
-    tetri.drawBlock(findColor(tetri.c));
+    if (tetri.lowest_y < 20) {
+      tetri.drawBlock(findColor(tetri.c));
+    }
   }
 }
 

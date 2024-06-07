@@ -82,6 +82,13 @@ class Blocks{
   square(x*43 + 530, y*43 + 20, 43);
 }
 
+public void fixFloorRotation() {
+  if (lowest_y > 19) {
+        int diff = lowest_y - 19;
+        lowest_y = 19;
+        y -= diff;
+  }
+}
 
 public void drawBlock(color c) {
   for (int i = 0; i < block.length; i++){ // y
