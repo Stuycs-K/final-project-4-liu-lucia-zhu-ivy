@@ -10,8 +10,8 @@ Grid g;
   
 void setup() {
   size(1500, 900);
-  g = new Grid();
   drawSigns();
+  g = new Grid();
   playing = false;
 }
 
@@ -40,28 +40,8 @@ public void keyPressed(){
       playing = false;
       quit();
     }
-    if(key == CODED){
-      g.drawBlock(0);
-      if(keyCode == UP){
-        g.tetri.up();
-      }
-      if(keyCode == DOWN){
-        g.tetri.down();
-      }
-      if(keyCode == LEFT && g.canShiftLeft()){
-        g.tetri.left();
-      }
-      if(keyCode == RIGHT && g.canShiftRight()){
-        g.tetri.right();
-      }
-      g.drawBlock(g.findColor(g.tetri.c));
-    }
-    else{
-      if(key == ' '){
-          System.out.println("space");
-          g.tetri.space();
-          g.drawBlock(g.findColor(g.tetri.c));
-        }
+    if (key == CODED || key == ' '){
+      g.keyPressed();
     }
   }
   
@@ -69,21 +49,26 @@ public void keyPressed(){
 //=====HELPER FUNCTIONS=====//
 
 void quit() {
-  g.points = 0;
-  g.linesCleared = 0;
-  rectBorder(400, 150, 1000, 20);
-  rectBorder(400, 150, 1000, 190);
-  fill(0);
-  stroke(255);
-  for (int i = 530; i <= 917; i = i + 43) {
-    for (int j = 20; j <= 860; j = j + 43) {
-      rect(i, j, 43, 43);
-    }
-  }
+  setup();
+  //rectBorder(400, 150, 1000, 20);
+  //rectBorder(400, 150, 1000, 190);
+  //fill(0);
+  //stroke(255);
+  //for (int i = 530; i <= 917; i = i + 43) {
+  //  for (int j = 20; j <= 860; j = j + 43) {
+  //    rect(i, j, 43, 43);
+  //  }
+  //}
 }
 
 void lose() {
+<<<<<<< HEAD
   
+=======
+  if (g.lose){
+    quit();
+  }
+>>>>>>> b4e76d28db018eb71275232ef339f3c43ed52037
 }
 
 void drawSigns() {

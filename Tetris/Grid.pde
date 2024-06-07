@@ -2,15 +2,17 @@ import java.util.*;
 import java.io.*;
 
 public class Grid {
-  //int[][] grid;
   ArrayList<int[]> grid;
   ArrayList<String> toSpawn;
   ArrayList<Integer> rowSum; // indicates whether a row is full or not and should be cleared
-  public Blocks tetri;
-  public boolean stop; // indicates when block has reached bottom or another block
+  Blocks tetri;
+  //public boolean stop; // indicates when block has reached bottom or another block
   int points;
   int linesCleared;
-  public int[] lowest = new int[10];
+  int[] lowest = new int[10];
+  boolean lose = false;
+  Blocks next;
+  int nextX, nextY;
 
   // creates an grid representing the playable grid
   public Grid() { 
@@ -20,11 +22,17 @@ public class Grid {
       grid.add(new int[10]);
       rowSum.add(0);
     }
-    toSpawn = new ArrayList<String>();
     points = 0;
     linesCleared = 0;
-    tetri = new J(); // starting block
-    refill();
+    // this is so that every block gets used once before there are duplicates
+    toSpawn = new ArrayList<String>();
+    String[] types = new String[] {"I", "J", "L", "O", "S", "T", "Z"};
+    for (String s : types){
+      toSpawn.add(s);
+    }
+    tetri = spawnNew();
+    next = spawnNew();
+    displayNext();
   }
   
   // refills the bag (toSpawn) of possible "next" blocks
@@ -38,38 +46,52 @@ public class Grid {
   }
   
   // randomly chooses and spawns a block from toSpawn
-  void spawnNew() {
+  Blocks spawnNew() {
     if (toSpawn.size() == 0) {
       refill();
     }
-   String type = toSpawn.get((int)(Math.random() * toSpawn.size()));
-   if (type.equals("I")) { tetri = new I(); }
-   if (type.equals("J")) { tetri = new J(); }
-   if (type.equals("L")) { tetri = new L(); }
-   if (type.equals("O")) { tetri = new O(); }
-   if (type.equals("S")) { tetri = new S(); }
-   if (type.equals("T")) { tetri = new T(); }
-   if (type.equals("Z")) { tetri = new Z(); }
+   String type = toSpawn.remove((int)(Math.random() * toSpawn.size()));
+   if (type.equals("I")) { return new I(); }
+   if (type.equals("J")) { return new J(); }
+   if (type.equals("L")) { return new L(); }
+   if (type.equals("O")) { return new O(); }
+   if (type.equals("S")) { return new S(); }
+   if (type.equals("T")) { return new T(); }
+   if (type.equals("Z")) { return new Z(); }
+   else {
+     return new O(); // won't reach here but won't compile otherwise
+   }
   }
   
-  
-  // Ivy's code
 
 public void run(){
+<<<<<<< HEAD
   if (shouldStop()) {
+=======
+  if (lose){
+    exit();
+  }
+  else if (shouldStop()) {
+    delay(700);
+>>>>>>> b4e76d28db018eb71275232ef339f3c43ed52037
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
       rectBorder(400, 150, 1000, 190);
       delay(700);
     }
-    spawnNew();
+    next.drawBlock(0);
+    tetri = next;
+    tetri.x = nextX;
+    tetri.y = nextY;
+    next = spawnNew();
+    displayNext();
   }
   else {
     if (tetri.b_time < millis() + 10) {
-      drawBlock(0);
+      tetri.drawBlock(0);
     }
-     tetri.fall();
-     drawBlock(findColor(tetri.c));
+    tetri.fall();
+    tetri.drawBlock(findColor(tetri.c));
   }
 }
 
@@ -125,20 +147,7 @@ public color findColor(int c) {
 // if lowest_y reaches the bottom,
 // or the block is on top of another block,
 // this returns true
-public boolean shouldStop() {
-  // Ivy's
-  //System.out.println(tetri.lowest_y);
-  //for (int i = 0; i < lowest.length; i++){
-  //  System.out.print(lowest[i] + " ");
-  //}
-  //System.out.println();
-  //if(19 - tetri.lowest_y <= lowest[tetri.x]){
-  //  lowest[tetri.x] += tetri.block.length;
-  //}
-  //return 19 - tetri.lowest_y <= lowest[tetri.x];
-  
-  // Lucia's
-  
+public boolean shouldStop() {  
   if (tetri.lowest_y >= 19) {
     return true;
   }
@@ -159,25 +168,6 @@ public boolean shouldStop() {
       
   }
 
-public void display(int x, int y, color c){
-  fill(c);
-  stroke(255);
-  square(x*43 + 530, y*43 + 20, 43);
-}
-
-
-public void drawBlock(color c) {
-  for (int i = 0; i < tetri.block.length; i++){ // y
-      for (int j = 0; j < tetri.block[0].length; j++){ // x
-        if(tetri.block[i][j] == 1){
-          int x = tetri.x+j;
-          int y = tetri.y+i;
-          display(x, y, c);
-        }
-      }
-  }
-}
-
 // once the block has stopped, the block's color values
 // are inputted into the grid so the grid can 
 // remember the block's position
@@ -192,7 +182,13 @@ public ArrayList<Integer> inputBlock() {
           int x = tetri.x+j;
           int y = tetri.y+i;
           grid.get(19 - y)[x] = tetri.c;
-          System.out.println("Inputted: " + (19 - y) + " " + x);
+          if (20 - y > lowest[x]){
+            lowest[x] = 20 - y;
+            if (lowest[x] == 20){
+              lose = true;
+            }
+          }
+          //System.out.println("Inputted: " + (19 - y) + " " + x);
           rowSum.set(19 - y, rowSum.get(19 - y) + 1);
           if (rowSum.get(19 - y) == 10) {
             ans.add(19 - y);
@@ -200,6 +196,7 @@ public ArrayList<Integer> inputBlock() {
         }
       }
   }
+  //println(Arrays.toString(lowest));
   return ans;
 }
 
@@ -213,6 +210,9 @@ public boolean clearLine(ArrayList<Integer> rows) {
   if (rows.size() > 0) {
   int n = rows.size();
   int low = rows.get(n - 1);
+  for (int i = 0; i < 10 ; i++){
+    lowest[i] -= n;
+  }
   // point system
     if (n == 1) {
       points += 100;
@@ -237,7 +237,7 @@ public boolean clearLine(ArrayList<Integer> rows) {
   }
   for (int i = low; i < 20; i++) { 
     for (int j = 0; j < 10; j++) { 
-      display(j, 19 - i, findColor(grid.get(i)[j]));
+      tetri.display(j, 19 - i, findColor(grid.get(i)[j]));
     }
   }
   return true;
@@ -245,6 +245,39 @@ public boolean clearLine(ArrayList<Integer> rows) {
 return false;
 }
 
+public void keyPressed(){
+  tetri.drawBlock(0);
+  if(key == CODED){
+      if(keyCode == UP){
+        tetri.up();
+      }
+      if(keyCode == DOWN){
+        tetri.down();
+      }
+      if(keyCode == LEFT && canShiftLeft()){
+        tetri.left();
+      }
+      if(keyCode == RIGHT && canShiftRight()){
+        tetri.right();
+      }
+    }
+    else{
+      if(key == ' '){
+        // spacebar - block down immediately
+        while (!shouldStop()){
+          tetri.down();
+        }
+      }
+    }
+    tetri.drawBlock(findColor(tetri.c));
+}
 
+void displayNext(){
+  nextX = next.x;
+  nextY = next.y;
+  next.x = -10;
+  next.y = 1;
+  next.drawBlock(findColor(next.c));
+}
 
 }

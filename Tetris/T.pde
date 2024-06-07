@@ -12,7 +12,7 @@ class T extends Blocks{
     // grid changes based on parity
     if (flip % 2 == 0){
        block = new int[2][3];
-       System.out.println(x);
+       //System.out.println(x);
        if (x == 8){
         x--;
        }
