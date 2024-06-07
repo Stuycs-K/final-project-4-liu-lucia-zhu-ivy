@@ -284,19 +284,9 @@ public void keyPressed(){
     else{
       if(key == ' '){
         // spacebar - block down immediately
-        int max = 0;
-        for (int i = 0; i < tetri.block[0].length; i++){
-          for (int j = 0; j < tetri.block.length; j++){
-            if (tetri.block[j][i] == 1){
-              if (lowest[i] + j > max){
-                max = lowest[i] + j;
-                println(max);
-              }
-            }
-          }
+        while (!shouldStop()){
+          tetri.down();
         }
-        //tetri.y = 18 - max + tetri.block.length;
-        //stop = true;
       }
     }
     drawBlock(findColor(tetri.c));
