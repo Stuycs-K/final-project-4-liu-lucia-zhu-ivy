@@ -48,7 +48,6 @@ public class Grid {
   // randomly chooses and spawns a block from toSpawn
   Blocks spawnNew() {
     if (toSpawn.size() == 0) {
-      println("empty");
       refill();
     }
    String type = toSpawn.remove((int)(Math.random() * toSpawn.size()));
