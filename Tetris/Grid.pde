@@ -192,6 +192,8 @@ public void changeShouldDraw() {
   }
 }
 
+
+
 // once the block has stopped, the block's color values
 // are inputted into the grid so the grid can 
 // remember the block's position
@@ -282,7 +284,31 @@ public void keyPressed(){
       else {
         tetri.drawBlock(0);
         if(keyCode == UP){
+          int prevX = tetri.x;
+          int prevY = tetri.y;
+          int lowestPrevY = tetri.lowest_y;
           tetri.up();
+          if (!isValid()) {
+            tetri.x--;
+            if (!isValid()) {
+              tetri.x += 2;
+              if (!isValid()) {
+                tetri.x--;
+                tetri.y--; 
+                tetri.lowest_y--;
+                if (!isValid()) {
+                  tetri.y--;
+                  tetri.lowest_y--;
+                  if (!isValid()) {
+                    tetri.y--;
+                    tetri.lowest_y--;
+                    if (!isValid()) {
+                      tetri.up();
+                      tetri.x = prevX;
+                      tetri.y = prevY;
+                      tetri.lowest_y = lowestPrevY;
+                    } } } } } } 
+         
         }
         if(keyCode == DOWN){
           tetri.down();
@@ -309,15 +335,17 @@ public void keyPressed(){
     }
 }
 
-public void fixFloorRotation() {
-  if (tetri.lowest_y > 19) {
-        tetri.lowest_y--;
-        tetri.y--;
+public boolean isValid() {
+  for (int i = 0; i < tetri.block.length; i++) {
+    for (int j = 0; j < tetri.block[0].length; j++) {
+      int ii = i + tetri.y;
+      int jj = j + tetri.x;
+      if (19 - ii < 0 || jj < 0 || jj > 9 || grid.get(19 - ii)[jj] != 0) {
+        return false;
+      }
+    }
   }
-  else if (grid.get(19 - tetri.lowest_y)[tetri.x] != 0) {
-    tetri.lowest_y--;
-    tetri.y--;
-  }
+  return true;
 }
 
 void displayNext(){
