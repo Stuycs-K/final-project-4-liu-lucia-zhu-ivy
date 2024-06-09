@@ -66,7 +66,7 @@ public class Grid {
   
 
 public void run(){
-  changeShouldDraw();
+  //changeShouldDraw();
   if (lose){
     exit();
   }
@@ -87,11 +87,12 @@ public void run(){
     displayNext();
   }
   else {
-    if (tetri.b_time < millis() + 10 && tetri.lowest_y < 19) {
+    changeShouldDraw();
+    if (tetri.b_time < millis() + 10 && tetri.lowest_y < 19 && shouldDraw) {
       tetri.drawBlock(0);
     }
     tetri.fall();
-    if (tetri.lowest_y < 20) {
+    if (shouldDraw) {
       tetri.drawBlock(findColor(tetri.c));
     }
   }
@@ -298,9 +299,12 @@ public void keyPressed(){
     else{
       if(key == ' '){
         // spacebar - block down immediately
-        while (!shouldStop()){
+        tetri.drawBlock(0);
+        while (shouldDraw){
           tetri.down();
+          changeShouldDraw();
         }
+        tetri.drawBlock(findColor(tetri.c));
       }
     }
 }
