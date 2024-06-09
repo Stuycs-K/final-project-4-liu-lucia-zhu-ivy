@@ -19,6 +19,9 @@ class J extends Blocks{
        }
     }else{
       block = new int[3][2];
+      if (y > 16){
+        y = 17;
+      }
       lowest_y = y + 2;
     }
     // fill in block

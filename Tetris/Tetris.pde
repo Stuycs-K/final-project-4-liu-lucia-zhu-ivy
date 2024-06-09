@@ -33,8 +33,10 @@ public void keyPressed(){
       playing = false;
       quit();
     }
-    if (key == CODED || key == ' '){
-      g.keyPressed();
+    if (playing){
+      if (key == CODED || key == ' '){
+        g.keyPressed();
+      }
     }
   }
   
@@ -43,15 +45,6 @@ public void keyPressed(){
 
 void quit() {
   setup();
-  //rectBorder(400, 150, 1000, 20);
-  //rectBorder(400, 150, 1000, 190);
-  //fill(0);
-  //stroke(255);
-  //for (int i = 530; i <= 917; i = i + 43) {
-  //  for (int j = 20; j <= 860; j = j + 43) {
-  //    rect(i, j, 43, 43);
-  //  }
-  //}
 }
 
 void lose() {

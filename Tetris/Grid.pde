@@ -31,7 +31,8 @@ public class Grid {
     for (String s : types){
       toSpawn.add(s);
     }
-    tetri = spawnNew();
+    //tetri = spawnNew();
+    tetri = new J();
     next = spawnNew();
     displayNext();
   }
@@ -71,6 +72,7 @@ public void run(){
     exit();
   }
   else if (shouldStop()) {
+    delay(700);
     tetri.lowest_y--;
     tetri.y--;
     tetri.drawBlock(findColor(tetri.c));

@@ -12,6 +12,9 @@ class I extends Blocks{
     if (flip){
       block = new int[4][1];
       x++;
+      if (y > 15){
+        y = 16;
+      }
       lowest_y = y + 3;
       for (int i = 0; i < 4; i++){
         block[i][0] = 1;
