@@ -11,6 +11,7 @@ public class Grid {
   int linesCleared;
   int[] lowest = new int[10];
   boolean lose = false;
+  boolean shouldDraw = true;
   Blocks next;
   int nextX, nextY;
 
@@ -65,6 +66,7 @@ public class Grid {
   
 
 public void run(){
+  changeShouldDraw();
   if (lose){
     exit();
   }
@@ -160,12 +162,34 @@ public boolean shouldStop() {
       }
       //iy++;
       iy += tetri.y;
-        if(19 - iy >= 0 && grid.get(19 - iy)[ix] != 0){
+        if(grid.get(19 - iy)[ix] != 0){
           ans = true;
         }
       }
       return ans;     
   }
+  
+public void changeShouldDraw() {
+  if (tetri.lowest_y >= 19) {
+    shouldDraw = false;
+  }
+  else {
+    boolean ans = true;
+    for (int j = 0; j < tetri.block[0].length; j++){
+    int iy = tetri.block.length - 1;
+    int ix = tetri.x+j;
+    while (tetri.block[iy][j] == 0) {
+      iy--;
+    }
+    iy++;
+    iy += tetri.y;
+      if(grid.get(19 - iy)[ix] != 0){
+        ans = false;
+      }
+    }
+    shouldDraw = ans;
+  }
+}
 
 // once the block has stopped, the block's color values
 // are inputted into the grid so the grid can 
@@ -245,19 +269,30 @@ return false;
 }
 
 public void keyPressed(){
-  tetri.drawBlock(0);
+  changeShouldDraw();
   if(key == CODED){
-      if(keyCode == UP){
-        tetri.up();
-      }
-      if(keyCode == DOWN){
+    if(keyCode == DOWN){
+      if (shouldDraw) {
+        tetri.drawBlock(0);
         tetri.down();
+        tetri.drawBlock(findColor(tetri.c));
+       }
       }
-      if(keyCode == LEFT && canShiftLeft()){
-        tetri.left();
-      }
-      if(keyCode == RIGHT && canShiftRight()){
-        tetri.right();
+      else {
+        tetri.drawBlock(0);
+        if(keyCode == UP){
+          tetri.up();
+        }
+        if(keyCode == DOWN){
+          tetri.down();
+        }
+        if(keyCode == LEFT && canShiftLeft()){
+          tetri.left();
+        }
+        if(keyCode == RIGHT && canShiftRight()){
+          tetri.right();
+        }
+        tetri.drawBlock(findColor(tetri.c));
       }
     }
     else{
@@ -268,7 +303,6 @@ public void keyPressed(){
         }
       }
     }
-    tetri.drawBlock(findColor(tetri.c));
 }
 
 public void fixFloorRotation() {

@@ -20,7 +20,8 @@ class Blocks{
     if (millis() > b_time) {
       y++;
       lowest_y++;
-      b_time = millis() + (int) (1000 * speed) + millis()/10000;
+      b_time = millis() + (int) (1000 * speed);
+      //+ millis()/10000;
     }
   }
   
@@ -69,6 +70,9 @@ class Blocks{
     speed = n;
   }
   
+  public void fixFloorRotation() {
+  }
+  
   // display blocks
   
   public void display(int x, int y, color c){
@@ -89,6 +93,7 @@ public void drawBlock(color c) {
           int x = this.x+j;
           int y = this.y+i;
           display(x, y, c);
+          System.out.println(x + ", " + y);
         }
       }
   }
