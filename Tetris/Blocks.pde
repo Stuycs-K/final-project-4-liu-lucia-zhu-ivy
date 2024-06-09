@@ -73,7 +73,7 @@ class Blocks{
   
   // display blocks
   
-  public void display(int x, int y, color c){
+  public void display(float x, float y, color c){
   fill(c);
   if (x < 0){
     stroke(0);
