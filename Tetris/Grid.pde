@@ -31,7 +31,7 @@ public class Grid {
       toSpawn.add(s);
     }
     //tetri = spawnNew();
-    tetri = new I();
+    tetri = new J();
     next = spawnNew();
     displayNext();
   }
@@ -66,7 +66,6 @@ public class Grid {
   
 
 public void run(){
-  if (shouldStop()) {
   if (lose){
     exit();
   }
@@ -91,7 +90,6 @@ public void run(){
     tetri.fall();
     tetri.drawBlock(findColor(tetri.c));
   }
-}
 }
 
 // correlates tetri.c back to an actual color
