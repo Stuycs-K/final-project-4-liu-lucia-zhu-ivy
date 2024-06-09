@@ -11,6 +11,9 @@ class S extends Blocks{
   public void up(){
     if (flip){
       block = new int[3][2];
+      if (y > 16){
+        y = 17;
+      }
       lowest_y = y + 2;
       block[0][0] = 1;
       block[1][0] = 1;
