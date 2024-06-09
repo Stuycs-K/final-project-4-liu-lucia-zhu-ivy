@@ -40,8 +40,10 @@ public void keyPressed(){
       playing = false;
       quit();
     }
-    if (key == CODED || key == ' '){
-      g.keyPressed();
+    if (playing){
+      if (key == CODED || key == ' '){
+        g.keyPressed();
+      }
     }
   }
   
