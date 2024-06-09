@@ -17,12 +17,14 @@ class T extends Blocks{
         x--;
        }
        lowest_y = y + 1;
+       fixFloorRotation();
     }else{
       block = new int[3][2];
       if (y > 16){
         y = 17;
       }
       lowest_y = y + 2;
+      fixFloorRotation();
     }
     // fill in block
     if (flip == 0){

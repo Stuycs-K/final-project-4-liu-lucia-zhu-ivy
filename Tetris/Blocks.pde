@@ -82,7 +82,6 @@ class Blocks{
   square(x*43 + 530, y*43 + 20, 43);
 }
 
-
 public void drawBlock(color c) {
   for (int i = 0; i < block.length; i++){ // y
       for (int j = 0; j < block[0].length; j++){ // x

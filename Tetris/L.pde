@@ -13,6 +13,7 @@ class L extends Blocks{
     if (flip % 2 == 0){
        block = new int[2][3];
        lowest_y = y + 1;
+       fixFloorRotation();
        if(x == 8){
         x--;
        }
@@ -22,6 +23,7 @@ class L extends Blocks{
         y = 17;
       }
       lowest_y = y + 2;
+      fixFloorRotation();
     }
     // fill in block
     if (flip == 0){

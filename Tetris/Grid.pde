@@ -71,6 +71,9 @@ public void run(){
   }
   else if (shouldStop()) {
     delay(700);
+    tetri.lowest_y--;
+    tetri.y--;
+    tetri.drawBlock(findColor(tetri.c));
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
       rectBorder(400, 150, 1000, 190);
@@ -84,11 +87,13 @@ public void run(){
     displayNext();
   }
   else {
-    if (tetri.b_time < millis() + 10) {
+    if (tetri.b_time < millis() + 10 && tetri.lowest_y < 19) {
       tetri.drawBlock(0);
     }
     tetri.fall();
-    tetri.drawBlock(findColor(tetri.c));
+    if (tetri.lowest_y < 20) {
+      tetri.drawBlock(findColor(tetri.c));
+    }
   }
 }
 
@@ -145,7 +150,7 @@ public color findColor(int c) {
 // or the block is on top of another block,
 // this returns true
 public boolean shouldStop() {  
-  if (tetri.lowest_y >= 19) {
+  if (tetri.lowest_y >= 20) {
     return true;
   }
   boolean ans = false;
@@ -155,14 +160,13 @@ public boolean shouldStop() {
       while (tetri.block[iy][j] == 0) {
         iy--;
       }
-      iy++;
+      //iy++;
       iy += tetri.y;
-        if(grid.get(19 - iy)[ix] != 0){
+        if(19 - iy >= 0 && grid.get(19 - iy)[ix] != 0){
           ans = true;
         }
       }
-      return ans;
-      
+      return ans;     
   }
 
 // once the block has stopped, the block's color values
@@ -171,7 +175,6 @@ public boolean shouldStop() {
 // returns an ArrayList of rows that can be cleared after 
 // the block is inputted, if any
 public ArrayList<Integer> inputBlock() {
-  //delay(3000);
   ArrayList<Integer> ans = new ArrayList<Integer>();
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){
@@ -268,6 +271,17 @@ public void keyPressed(){
       }
     }
     tetri.drawBlock(findColor(tetri.c));
+}
+
+public void fixFloorRotation() {
+  if (tetri.lowest_y > 19) {
+        tetri.lowest_y--;
+        tetri.y--;
+  }
+  else if (grid.get(19 - tetri.lowest_y)[tetri.x] != 0) {
+    tetri.lowest_y--;
+    tetri.y--;
+  }
 }
 
 void displayNext(){
