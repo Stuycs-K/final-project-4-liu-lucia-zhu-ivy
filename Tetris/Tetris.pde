@@ -163,8 +163,8 @@ void drawBlock(Blocks b){
 void drawTotal(){
   stroke(0);
   fill(0);
-  rect(175, 400, 50, 300);
-  rect(375, 400, 45, 300);
+  rect(175, 400, 50, 400);
+  rect(375, 400, 45, 400);
   fill(g.findColor(1));
   text(g.Icount, 175, 450);
   fill(g.findColor(4));
