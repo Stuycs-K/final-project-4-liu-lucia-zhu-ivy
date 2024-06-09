@@ -70,8 +70,6 @@ class Blocks{
     speed = n;
   }
   
-  public void fixFloorRotation() {
-  }
   
   // display blocks
   
@@ -93,7 +91,6 @@ public void drawBlock(color c) {
           int x = this.x+j;
           int y = this.y+i;
           display(x, y, c);
-          System.out.println(x + ", " + y);
         }
       }
   }

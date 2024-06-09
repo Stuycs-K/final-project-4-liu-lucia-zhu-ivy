@@ -66,7 +66,7 @@ public class Grid {
   
 
 public void run(){
-  //changeShouldDraw();
+  updateScore();
   if (lose){
     exit();
   }
@@ -75,9 +75,7 @@ public void run(){
     tetri.y--;
     tetri.drawBlock(findColor(tetri.c));
     if (clearLine(inputBlock())) {
-      rectBorder(400, 150, 1000, 20);
-      rectBorder(400, 150, 1000, 190);
-      delay(700);
+      delay(400);
     }
     next.drawBlock(0);
     tetri = next;
@@ -161,7 +159,6 @@ public boolean shouldStop() {
       while (tetri.block[iy][j] == 0) {
         iy--;
       }
-      //iy++;
       iy += tetri.y;
         if(grid.get(19 - iy)[ix] != 0){
           ans = true;
@@ -213,7 +210,6 @@ public ArrayList<Integer> inputBlock() {
               lose = true;
             }
           }
-          //System.out.println("Inputted: " + (19 - y) + " " + x);
           rowSum.set(19 - y, rowSum.get(19 - y) + 1);
           if (rowSum.get(19 - y) == 10) {
             ans.add(19 - y);
@@ -221,7 +217,6 @@ public ArrayList<Integer> inputBlock() {
         }
       }
   }
-  //println(Arrays.toString(lowest));
   return ans;
 }
 
@@ -311,6 +306,7 @@ public void keyPressed(){
          
         }
         if(keyCode == DOWN){
+          points += 1;
           tetri.down();
         }
         if(keyCode == LEFT && canShiftLeft()){
@@ -325,6 +321,7 @@ public void keyPressed(){
     else{
       if(key == ' '){
         // spacebar - block down immediately
+        points += 50 - tetri.y;
         tetri.drawBlock(0);
         while (shouldDraw){
           tetri.down();
@@ -347,6 +344,14 @@ public boolean isValid() {
   }
   return true;
 }
+
+public void updateScore() {
+  //text("Points:", 1100, 70);
+  //rectBorder(400, 150, 1000, 20);
+  //rectBorder(400, 150, 1000, 190);
+  //text("" + g.points, 1100, 130);
+}
+  
 
 void displayNext(){
   nextX = next.x;

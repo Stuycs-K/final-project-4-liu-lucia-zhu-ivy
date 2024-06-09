@@ -19,14 +19,7 @@ void setup() {
 // Q = QUIT and will clear the grid
 void draw(){
   fill(255);
-  textSize(30);
-  text("Press 'p' to play or pause", 1050, 420);
-  text("Press 'q' to quit", 1050, 460);
-  textSize(40);
-  text("Points:", 1100, 70);
-  text("" + g.points, 1100, 130);
-  text("Lines Cleared:", 1100, 250);
-  text("" + g.linesCleared, 1100, 300);
+ // text("" + g.linesCleared, 1100, 300);
   if (playing) {
     g.run();
   }
@@ -89,11 +82,20 @@ void drawSigns() {
   rectBorder(300, 300, 30, 20); // up-next block displayer
   rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
   rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
+  textSize(30);
+  fill(255);
+  text("Press 'p' to play or pause", 1050, 420);
+  text("Press 'q' to quit", 1050, 460);
+  textSize(40);
+  text("Points:", 1100, 70);
+  text("Lines Cleared:", 1100, 250);
+  text("Top Score: ", 1100, 590);
+  text("Block Speed: ", 1100, 760);
 }
   
 
 // draws a white-bordered black rectangle (border width: 10 px)
-void rectBorder(int w, int h, int x, int y) {
+public void rectBorder(int w, int h, int x, int y) {
   stroke(0);
   fill(255);
   rect(x, y, w, h);
