@@ -65,14 +65,12 @@ public class Grid {
   
 
 public void run(){
-  System.out.println(tetri.lowest_y);
   if (lose){
     exit();
   }
   else if (shouldStop()) {
-    int diff = tetri.lowest_y - 19;
-    tetri.lowest_y = 19;
-    tetri.y -= diff;
+    tetri.lowest_y--;
+    tetri.y--;
     tetri.drawBlock(findColor(tetri.c));
     if (clearLine(inputBlock())) {
       rectBorder(400, 150, 1000, 20);
@@ -160,7 +158,7 @@ public boolean shouldStop() {
       while (tetri.block[iy][j] == 0) {
         iy--;
       }
-      iy++;
+      //iy++;
       iy += tetri.y;
         if(19 - iy >= 0 && grid.get(19 - iy)[ix] != 0){
           ans = true;
@@ -175,7 +173,6 @@ public boolean shouldStop() {
 // returns an ArrayList of rows that can be cleared after 
 // the block is inputted, if any
 public ArrayList<Integer> inputBlock() {
-  //delay(3000);
   ArrayList<Integer> ans = new ArrayList<Integer>();
   for (int i = 0; i < tetri.block.length; i++){
       for (int j = 0; j < tetri.block[0].length; j++){
@@ -272,6 +269,17 @@ public void keyPressed(){
       }
     }
     tetri.drawBlock(findColor(tetri.c));
+}
+
+public void fixFloorRotation() {
+  if (tetri.lowest_y > 19) {
+        tetri.lowest_y--;
+        tetri.y--;
+  }
+  else if (grid.get(19 - tetri.lowest_y)[tetri.x] != 0) {
+    tetri.lowest_y--;
+    tetri.y--;
+  }
 }
 
 void displayNext(){
