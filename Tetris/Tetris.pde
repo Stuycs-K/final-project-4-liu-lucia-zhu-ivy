@@ -91,12 +91,12 @@ void drawSigns() {
   text("Points:", 1100, 70);
   text("Lines Cleared:", 1100, 250);
   text("Top Score: ", 1100, 590);
-  text("Next Block", 100, 300);
+  textSize(20);
+  text("Next Block", 100, 250);
   fill(0);
   textSize(100);
   text("TETRIS", 600, 100);
   textSize(40);
-  text("Block Speed: ", 1100, 760);  
   text(topScore, 1100, 640);
 }
   
