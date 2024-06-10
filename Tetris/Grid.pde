@@ -366,13 +366,15 @@ public void keyPressed(){
         //  tetri.down();
         //  updateScore();
         //}
-        if(keyCode == LEFT && canShiftLeft()){
+        if(keyCode == LEFT && !shouldStop() && canShiftLeft()){
           tetri.left();
         }
-        if(keyCode == RIGHT && canShiftRight()){
+        if(keyCode == RIGHT && !shouldStop() && canShiftRight()){
           tetri.right();
         }
-        tetri.drawBlock(findColor(tetri.c));
+        if (!shouldStop()) {
+          tetri.drawBlock(findColor(tetri.c));
+        }
       }
     }
     else{

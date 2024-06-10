@@ -40,6 +40,35 @@ Implemented the lineClearing mechanism.
 Displayed points earned, number of lines cleared, instructions + pausing and quitting
 Now we have a working Tetris game
 
+### date 6/3/24
+
+Trying to delay the block when locking-in so there's extra time for the block to shimmy.
+
+### date 6/5/24
+
+Modified shouldStop() so that it returns true when the block has already overlapped another block
+or gone out of bounds. This provides a delay for the block to shimmy before it locks in.
+
+### date 6/7/24
+
+Implementing fixFloorRotation() which should make the block kick off the floor if the 
+rotated image of the block goes out of bounds.
+
+### date 6/8/24
+
+Fixed rotation issues by trying different possible positions of the rotated block
+and choosing the position that is valid (does not overlap other blocks or go out of bounds)
+
+### date 6/9/24
+
+Implemented lose and a game over screen.
+Added hard drop and soft drop point mechanics.
+Coded shouldDraw which fixed the majority of displaying problems 
+related to the modified shouldStop()
+Added text to all of the signs.
+Cut off the top of the displayed grid to make it easier to implement lose.
+Finalized game.
+
 
 ## GROUP MEMBER 2 (IVY ZHU)
 
