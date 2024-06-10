@@ -16,6 +16,7 @@ public class Grid {
   int nextX, nextY;
   int Icount = 0, Jcount = 0, Lcount = 0, Ocount = 0, Scount = 0, Tcount = 0, Zcount = 0;
 
+
   // creates an grid representing the playable grid
   public Grid() { 
     grid = new ArrayList<int[]>();
@@ -32,8 +33,8 @@ public class Grid {
     for (String s : types){
       toSpawn.add(s);
     }
-    //tetri = new J();
     tetri = spawnNew();
+    //tetri = new J();
     next = spawnNew();
     displayNext();
   }
@@ -54,13 +55,13 @@ public class Grid {
       refill();
     }
    String type = toSpawn.remove((int)(Math.random() * toSpawn.size()));
-   if (type.equals("I")) { Icount++; return new I(); }
-   if (type.equals("J")) { Jcount++; return new J(); }
-   if (type.equals("L")) { Lcount++; return new L(); }
-   if (type.equals("O")) { Ocount++; return new O(); }
-   if (type.equals("S")) { Scount++; return new S(); }
-   if (type.equals("T")) { Tcount++; return new T(); }
-   if (type.equals("Z")) { Zcount++; return new Z(); }
+   if (type.equals("I")) { return new I(); }
+   if (type.equals("J")) { return new J(); }
+   if (type.equals("L")) { return new L(); }
+   if (type.equals("O")) { return new O(); }
+   if (type.equals("S")) { return new S(); }
+   if (type.equals("T")) { return new T(); }
+   if (type.equals("Z")) { return new Z(); }
    else {
      return new O(); // won't reach here but won't compile otherwise
    }
@@ -73,12 +74,13 @@ public void run(){
     exit();
   }
   else if (shouldStop()) {
-    delay(700);
+    //delay(700);
     tetri.lowest_y--;
     tetri.y--;
     tetri.drawBlock(findColor(tetri.c));
+    incrementBlockCount();
     if (clearLine(inputBlock())) {
-      delay(400);
+      delay(300);
     }
     next.drawBlock(0);
     tetri = next;
@@ -96,6 +98,31 @@ public void run(){
     if (shouldDraw) {
       tetri.drawBlock(findColor(tetri.c));
     }
+  }
+}
+
+public void incrementBlockCount() {
+  String s = tetri.type;
+  if (s.equals("I")) {
+    Icount++;
+  }
+  if (s.equals("J")) {
+    Jcount++;
+  }
+  if (s.equals("L")) {
+    Lcount++;
+  }
+  if (s.equals("O")) {
+    Ocount++;
+  }
+  if (s.equals("S")) {
+    Scount++;
+  }
+  if (s.equals("T")) {
+    Tcount++;
+  }
+  if (s.equals("Z")) {
+    Zcount++;
   }
 }
 

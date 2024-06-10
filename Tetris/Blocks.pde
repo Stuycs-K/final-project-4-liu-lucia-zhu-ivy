@@ -1,6 +1,6 @@
 /// Blocks Class
 class Blocks{
-  private String type;
+  public String type;
   private double speed;
   public int x,y;
   public int lowest_y; // indicates the lowest y-cor the block takes up

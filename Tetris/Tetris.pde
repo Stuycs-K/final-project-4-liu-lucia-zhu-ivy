@@ -69,7 +69,7 @@ void drawSigns() {
   rectBorder(400, 150, 1000, 190); // current score sign
   rectBorder(400, 150, 1000, 360); // time sign
   rectBorder(400, 150, 1000, 530); // lines cleared sign
-  rectBorder(400, 150, 1000, 700); // current block speed sign
+ // rectBorder(400, 150, 1000, 700); // current block speed sign
   // maybe I can fit another sign on the right 
   // by making all the other signs a little smaller.
   // this sign could display the title name "Tetrisand" 
@@ -87,7 +87,7 @@ void drawSigns() {
   text("Points:", 1100, 70);
   text("Lines Cleared:", 1100, 250);
   text("Top Score: ", 1100, 590);
-  text("Block Speed: ", 1100, 760);
+  text("Next Block", 100, 300);
 }
   
 
