@@ -8,6 +8,7 @@ class Blocks{
   public int[][] block;
   public final int pixSize = 43;
   public int b_time; // used to time fall()
+//  public boolean isNext = false;
   
   public Blocks(String name){
     type = name;
@@ -74,15 +75,17 @@ class Blocks{
   // display blocks
   
   public void display(float x, float y, color c){
-  fill(c);
-  if (x < 0){
-    stroke(0);
+   if (y >= 3) {
+      fill(c);
+      if (x < 0){
+        stroke(0);
+      }
+      else{
+        stroke(255);
+      }
+      square(x*43 + 530, y*43 + 20, 43);
+   }
   }
-  else{
-    stroke(255);
-  }
-  square(x*43 + 530, y*43 + 20, 43);
-}
 
 public void drawBlock(color c) {
   for (int i = 0; i < block.length; i++){ // y

@@ -15,6 +15,7 @@ public class Grid {
   Blocks next;
   int nextX, nextY;
   int Icount = 0, Jcount = 0, Lcount = 0, Ocount = 0, Scount = 0, Tcount = 0, Zcount = 0;
+  boolean isLost = false;
 
 
   // creates an grid representing the playable grid
@@ -36,7 +37,8 @@ public class Grid {
     tetri = spawnNew();
     //tetri = new J();
     next = spawnNew();
-    displayNext();
+ //   next.isNext = true;
+    displayNext(next.c);
   }
   
   // refills the bag (toSpawn) of possible "next" blocks
@@ -69,34 +71,44 @@ public class Grid {
   
 
 public void run(){
-  updateScore();
-  if (lose){
-    exit();
-  }
-  else if (shouldStop()) {
-    //delay(700);
-    tetri.lowest_y--;
-    tetri.y--;
-    tetri.drawBlock(findColor(tetri.c));
-    incrementBlockCount();
-    if (clearLine(inputBlock())) {
-      delay(300);
-    }
-    next.drawBlock(0);
-    tetri = next;
-    tetri.x = nextX;
-    tetri.y = nextY;
-    next = spawnNew();
-    displayNext();
+  if (isLost) {
+     lose();
   }
   else {
-    changeShouldDraw();
-    if (tetri.b_time < millis() + 10 && tetri.lowest_y < 19 && shouldDraw) {
-      tetri.drawBlock(0);
+    updateScore();
+    if (shouldStop()) {
+      if (tetri.lowest_y <= 2) {
+        isLost = true;
+        lose();
+      }
+      else {
+        //delay(700);
+        tetri.lowest_y--;
+        tetri.y--;
+        tetri.drawBlock(findColor(tetri.c));
+        incrementBlockCount();
+        if (clearLine(inputBlock())) {
+          delay(300);
+        }
+        displayNext(0);
+        //next.drawBlock(0);
+        tetri = next;
+        tetri.x = nextX;
+        tetri.y = nextY;
+        next = spawnNew();
+       // next.isNext = true;
+        displayNext(next.c);
+      }
     }
-    tetri.fall();
-    if (shouldDraw) {
-      tetri.drawBlock(findColor(tetri.c));
+    else {
+      changeShouldDraw();
+      if (tetri.b_time < millis() + 10 && tetri.lowest_y < 19 && shouldDraw) {
+        tetri.drawBlock(0);
+      }
+      tetri.fall();
+      if (shouldDraw) {
+        tetri.drawBlock(findColor(tetri.c));
+      }
     }
   }
 }
@@ -233,13 +245,16 @@ public ArrayList<Integer> inputBlock() {
         if(tetri.block[i][j] == 1){
           int x = tetri.x+j;
           int y = tetri.y+i;
-          grid.get(19 - y)[x] = tetri.c;
-          if (20 - y > lowest[x]){
-            lowest[x] = 20 - y;
-            if (lowest[x] == 20){
-              lose = true;
-            }
+          if (y <= 1) {
+            isLost = true;
           }
+          grid.get(19 - y)[x] = tetri.c;
+          //if (20 - y > lowest[x]){
+          //  lowest[x] = 20 - y;
+          //  if (lowest[x] == 20){
+          //    lose = true;
+          //  }
+          //}
           rowSum.set(19 - y, rowSum.get(19 - y) + 1);
           if (rowSum.get(19 - y) == 10) {
             ans.add(19 - y);
@@ -248,6 +263,16 @@ public ArrayList<Integer> inputBlock() {
       }
   }
   return ans;
+}
+
+void lose() {
+  rectBorder(450, 751, 520, 139);
+  fill(255);
+  stroke(255);
+  textSize(50);
+  text("GAME OVER", 650, 500);
+  textSize(20);
+  text("Press 'p' to play again!", 650, 550);
 }
 
 // clears rows if there are rows to be cleared and then returns true
@@ -383,12 +408,24 @@ public void updateScore() {
 }
   
 
-void displayNext(){
+void displayNext(int c){
+  stroke(0);
   nextX = next.x;
   nextY = next.y;
-  next.x = -10;
-  next.y = 1;
-  next.drawBlock(findColor(next.c));
+ next.x = -10;
+ next.y = 1;
+  for (int i = 0; i < next.block.length; i++){ // y
+      for (int j = 0; j < next.block[0].length; j++){ // x
+        if(next.block[i][j] == 1){
+          int x = next.x+j;
+          int y = next.y+i;
+          fill(findColor(c));
+      square(x*43 + 530, y*43 + 20, 43);
+        }
+      }
+  }
+  next.x = nextX;
+  next.y = nextY;
 }
 
 }

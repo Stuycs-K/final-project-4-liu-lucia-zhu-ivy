@@ -57,10 +57,12 @@ void lose() {
 }
 
 void drawSigns() {
-  rectBorder(450, 880, 520, 10); // grid border + grid lines
+  //rectBorder(450, 880, 520, 10); // grid border + grid lines
+  //rectBorder(450, 794, 520, 96);
+  rectBorder(450, 751, 520, 139);
   stroke(255);
   for (int i = 530; i <= 917; i = i + 43) {
-    for (int j = 20; j <= 860; j = j + 43) {
+    for (int j = 149; j <= 860; j = j + 43) {
       rect(i, j, 43, 43);
     }
   }
@@ -88,6 +90,10 @@ void drawSigns() {
   text("Lines Cleared:", 1100, 250);
   text("Top Score: ", 1100, 590);
   text("Next Block", 100, 300);
+  fill(0);
+  textSize(100);
+  text("TETRIS", 600, 100);
+  textSize(40);
 }
   
 
