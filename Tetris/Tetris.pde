@@ -65,10 +65,10 @@ void drawSigns() {
     }
   }
   stroke(0);
-  rectBorder(400, 150, 1000, 20); // top score sign
-  rectBorder(400, 150, 1000, 190); // current score sign
-  rectBorder(400, 150, 1000, 360); // time sign
-  rectBorder(400, 150, 1000, 530); // lines cleared sign
+  rectBorder(400, 150, 1000, 20); // current score sign
+  rectBorder(400, 150, 1000, 190); // lines cleared sign
+  rectBorder(400, 150, 1000, 360); // play/quit instructions
+  rectBorder(400, 150, 1000, 530); // top score sign
   rectBorder(400, 150, 1000, 700); // current block speed sign
   // maybe I can fit another sign on the right 
   // by making all the other signs a little smaller.
