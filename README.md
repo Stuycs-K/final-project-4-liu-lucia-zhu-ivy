@@ -22,3 +22,5 @@ right: move right
 space: down to the lowest possible place the block can land
 p: play/pause
 q: restart
+
+We don't think we have any bugs! If you play it normally and you don't try to find bugs and spam keys or something, the game runs perfectly.
