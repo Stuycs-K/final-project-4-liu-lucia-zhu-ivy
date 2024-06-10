@@ -14,6 +14,7 @@ public class Grid {
   boolean shouldDraw = true;
   Blocks next;
   int nextX, nextY;
+  int Icount = 0, Jcount = 0, Lcount = 0, Ocount = 0, Scount = 0, Tcount = 0, Zcount = 0;
 
   // creates an grid representing the playable grid
   public Grid() { 
@@ -31,8 +32,8 @@ public class Grid {
     for (String s : types){
       toSpawn.add(s);
     }
-    //tetri = spawnNew();
-    tetri = new J();
+    //tetri = new J();
+    tetri = spawnNew();
     next = spawnNew();
     displayNext();
   }
@@ -53,13 +54,13 @@ public class Grid {
       refill();
     }
    String type = toSpawn.remove((int)(Math.random() * toSpawn.size()));
-   if (type.equals("I")) { return new I(); }
-   if (type.equals("J")) { return new J(); }
-   if (type.equals("L")) { return new L(); }
-   if (type.equals("O")) { return new O(); }
-   if (type.equals("S")) { return new S(); }
-   if (type.equals("T")) { return new T(); }
-   if (type.equals("Z")) { return new Z(); }
+   if (type.equals("I")) { Icount++; return new I(); }
+   if (type.equals("J")) { Jcount++; return new J(); }
+   if (type.equals("L")) { Lcount++; return new L(); }
+   if (type.equals("O")) { Ocount++; return new O(); }
+   if (type.equals("S")) { Scount++; return new S(); }
+   if (type.equals("T")) { Tcount++; return new T(); }
+   if (type.equals("Z")) { Zcount++; return new Z(); }
    else {
      return new O(); // won't reach here but won't compile otherwise
    }
