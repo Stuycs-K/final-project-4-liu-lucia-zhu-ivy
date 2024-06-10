@@ -248,16 +248,12 @@ public ArrayList<Integer> inputBlock() {
           if (y <= 1) {
             isLost = true;
           }
-          grid.get(19 - y)[x] = tetri.c;
-          //if (20 - y > lowest[x]){
-          //  lowest[x] = 20 - y;
-          //  if (lowest[x] == 20){
-          //    lose = true;
-          //  }
-          //}
-          rowSum.set(19 - y, rowSum.get(19 - y) + 1);
-          if (rowSum.get(19 - y) == 10) {
-            ans.add(19 - y);
+          if (!isLost) {
+            grid.get(19 - y)[x] = tetri.c;
+            rowSum.set(19 - y, rowSum.get(19 - y) + 1);
+            if (rowSum.get(19 - y) == 10) {
+              ans.add(19 - y);
+            }
           }
         }
       }
@@ -272,7 +268,7 @@ void lose() {
   textSize(50);
   text("GAME OVER", 650, 500);
   textSize(20);
-  text("Press 'p' to play again!", 650, 550);
+  text("Press 'q' and then 'p' to play again!", 650, 550);
 }
 
 // clears rows if there are rows to be cleared and then returns true
