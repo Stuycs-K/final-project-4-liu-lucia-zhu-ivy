@@ -2,5 +2,23 @@
 # APCS2 Final Project
 THIS DOCUMENT IS REQUIRED
 ## Group Info
+Ivy Zhu, Lucia Liu
+Techtris
 ## Overview
+We are recreating Tetris, including necessary features such as 7 tetrominos, 
+point systems, and arrow keys: left, right, down, up, and space.
+The up arrow is used for rotations, which allows our pieces to rotate clockwise.
+Pressing the down arrow adds one point each press and space bar brings the block down immediately.
+Our tetris board is 10x17 and we have multipliers for when you clear multiple rows at once. 
+We display your points, lines cleared, high score, the next tetromino, and the tetrominos that 
+have came out so far. 
 ## Instructions
+We imported ArrayList 
+
+up: rotate
+down: move down
+left: move left
+right: move right
+space: down to the lowest possible place the block can land
+p: play/pause
+q: restart
