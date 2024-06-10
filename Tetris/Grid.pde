@@ -266,9 +266,11 @@ void lose() {
   fill(255);
   stroke(255);
   textSize(50);
-  text("GAME OVER", 630, 500);
+  fill(255);
+  text("GAME OVER", 600, 500);
   textSize(20);
-  text("Press 'q' and then 'p' to play again!", 620, 550);
+  text("Press 'q' and then 'p' to play again!", 600, 550);
+  textSize(40);
 }
 
 // clears rows if there are rows to be cleared and then returns true

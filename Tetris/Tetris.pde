@@ -97,6 +97,7 @@ void drawSigns() {
   fill(255);
   text("Next Block", 100, 250);
   
+  fill(0);
   textSize(100);
   text("TETRIS", 600, 100);
   textSize(40);
