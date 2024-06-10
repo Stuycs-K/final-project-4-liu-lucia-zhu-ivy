@@ -277,7 +277,9 @@ public void keyPressed(){
     if(keyCode == DOWN){
       if (shouldDraw) {
         tetri.drawBlock(0);
+        points++;
         tetri.down();
+        updateScore();
         tetri.drawBlock(findColor(tetri.c));
        }
       }
@@ -310,11 +312,11 @@ public void keyPressed(){
                     } } } } } } 
          
         }
-        if(keyCode == DOWN){
-          points += 1;
-          tetri.down();
-          updateScore();
-        }
+        //if(keyCode == DOWN){
+        //  points++;
+        //  tetri.down();
+        //  updateScore();
+        //}
         if(keyCode == LEFT && canShiftLeft()){
           tetri.left();
         }
