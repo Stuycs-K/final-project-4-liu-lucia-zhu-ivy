@@ -13,7 +13,7 @@ Our tetris board is 10x17 and we have multipliers for when you clear multiple ro
 We display your points, lines cleared, high score, the next tetromino, and the tetrominos that 
 have came out so far. 
 ## Instructions
-We imported ArrayList 
+We imported ArrayList.
 
 up: rotate
 down: move down
@@ -22,3 +22,6 @@ right: move right
 space: down to the lowest possible place the block can land
 p: play/pause
 q: restart
+
+## Video
+https://drive.google.com/file/d/1IdEUfhvZVZiqWijscO3nUHxoDzaetmTY/view?usp=sharing
