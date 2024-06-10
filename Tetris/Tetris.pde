@@ -78,10 +78,10 @@ void drawSigns() {
   // this sign could display the title name "Tetrisand" 
   // and could also include instructions on how to play. 
   
-  rectBorder(300, 300, 30, 20); // up-next block displayer
+  rectBorder(280, 250, 30, 20); // up-next block displayer
   //rectBorder(150, 300, 350, 20); // displays whether you are in normal or sand mode
   // no more sand :(
-  rectBorder(400, 500, 30, 350); // displays how many of each block type has fallen
+  rectBorder(400, 530, 30, 300); // displays how many of each block type has fallen
   textSize(30);
   fill(255);
   text("Press 'p' to play or pause", 1050, 420);
@@ -111,16 +111,16 @@ void drawTotalBlocks(){
   Blocks O = new O();
   Blocks T = new T();
   I.x = -11;
-  I.y = 8;
+  I.y = 7;
   drawBlock(I);
   
   O.x = -11;
-  O.y = 13;
+  O.y = 12;
   drawBlock(O);
   
   T.up();
   T.x = -11;
-  T.y = 16;
+  T.y = 15;
   drawBlock(T);
   
   
@@ -130,19 +130,19 @@ void drawTotalBlocks(){
   Blocks S = new S();
   Blocks Z = new Z();
   J.x = -8; 
-  J.y = 8;
+  J.y = 7;
   drawBlock(J);
   
   L.x = -8;
-  L.y = 11;
+  L.y = 10;
   drawBlock(L);
   
   S.x = -8;
-  S.y = 14;
+  S.y = 13;
   drawBlock(S);
   
   Z.x = -8;
-  Z.y = 17;
+  Z.y = 16;
   drawBlock(Z);
   
 }
@@ -171,17 +171,17 @@ void drawTotal(){
   rect(175, 400, 50, 400);
   rect(375, 400, 45, 400);
   fill(g.findColor(1));
-  text(g.Icount, 175, 450);
+  text(g.Icount, 175, 430);
   fill(g.findColor(4));
-  text(g.Ocount, 175, 650);
+  text(g.Ocount, 175, 600);
   fill(g.findColor(6));
-  text(g.Tcount, 175, 790);
+  text(g.Tcount, 175, 740);
   fill(g.findColor(2));
-  text(g.Jcount, 375, 440);
+  text(g.Jcount, 375, 400);
   fill(g.findColor(3));
-  text(g.Lcount, 375, 525);
+  text(g.Lcount, 375, 520);
   fill(g.findColor(5));
-  text(g.Scount, 375, 675);
+  text(g.Scount, 375, 650);
   fill(g.findColor(7));
-  text(g.Zcount, 375, 800);
+  text(g.Zcount, 375, 770);
 }
