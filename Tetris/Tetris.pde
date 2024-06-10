@@ -3,7 +3,7 @@
 int time;
 boolean playing;
 Grid g;
-
+int topScore = 0;
 
 //=====CONTINUOUS FUNCTIONS======//
 
@@ -47,6 +47,9 @@ public void keyPressed(){
 //=====HELPER FUNCTIONS=====//
 
 void quit() {
+  if (g.points > topScore){
+    topScore = g.points;
+  }
   setup();
 }
 
@@ -88,6 +91,8 @@ void drawSigns() {
   text("Lines Cleared:", 1100, 250);
   text("Top Score: ", 1100, 590);
   text("Block Speed: ", 1100, 760);
+  
+  text(topScore, 1100, 640);
 }
   
 
