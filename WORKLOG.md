@@ -84,3 +84,14 @@ Need to discuss with Lucia how to have space bar working without changing a lot 
 space() works! 
 displayNext() works!
 Made it so that cycles through all 7 tetrominoes at first and then repeats
+
+### date 6/07/24
+
+Made the blocks speed up
+Made bag size smaller and fixed spawnNew
+
+### date 6/09/24
+
+Fixed rotations at the bottom
+Made pause so that keys don't work
+Worked on displaying signs

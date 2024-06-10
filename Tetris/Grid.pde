@@ -316,6 +316,7 @@ public boolean clearLine(ArrayList<Integer> rows) {
       tetri.display(j, 19 - i, findColor(grid.get(i)[j]));
     }
   }
+  updateScore();
   return true;
 }
 return false;
@@ -327,7 +328,9 @@ public void keyPressed(){
     if(keyCode == DOWN){
       if (shouldDraw) {
         tetri.drawBlock(0);
+        points++;
         tetri.down();
+        updateScore();
         tetri.drawBlock(findColor(tetri.c));
        }
       }
@@ -360,10 +363,11 @@ public void keyPressed(){
                     } } } } } } 
          
         }
-        if(keyCode == DOWN){
-          points += 1;
-          tetri.down();
-        }
+        //if(keyCode == DOWN){
+        //  points++;
+        //  tetri.down();
+        //  updateScore();
+        //}
         if(keyCode == LEFT && canShiftLeft()){
           tetri.left();
         }
@@ -401,10 +405,14 @@ public boolean isValid() {
 }
 
 public void updateScore() {
-  //text("Points:", 1100, 70);
-  //rectBorder(400, 150, 1000, 20);
-  //rectBorder(400, 150, 1000, 190);
-  //text("" + g.points, 1100, 130);
+  fill(0);
+  rectBorder(400, 150, 1000, 20); // current score sign
+  rectBorder(400, 150, 1000, 190); // lines cleared sign
+  fill(255);
+  text("Points:", 1100, 70);
+  text(points, 1100, 130);
+  text("Lines Cleared:", 1100, 250);
+  text(linesCleared, 1100, 300);
 }
   
 
