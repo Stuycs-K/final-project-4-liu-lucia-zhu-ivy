@@ -176,7 +176,7 @@ void drawTotal(){
   stroke(0);
   fill(0);
   rect(175, 400, 50, 400);
-  rect(375, 400, 45, 400);
+  rect(375, 350, 45, 450);
   fill(g.findColor(1));
   text(g.Icount, 175, 430);
   fill(g.findColor(4));
